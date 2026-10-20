@@ -135,7 +135,10 @@ export default function DocumentGeneratorPage() {
       const clone = element.cloneNode(true) as HTMLElement;
       
       // Force logo path to public/assets/favvy.png
-      const specificLogoUrl = `${window.location.origin}/assets/favvy.png`;
+      // Force logo path to absolute production URL so Puppeteer can load it over the network
+      const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.obbieconcepts.com';
+      const specificLogoUrl = `${baseUrl}/assets/favvy.png`;
+      
       const images = clone.querySelectorAll('img');
       images.forEach((img) => {
         img.setAttribute('src', specificLogoUrl);
