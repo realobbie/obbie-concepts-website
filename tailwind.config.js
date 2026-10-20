@@ -18,16 +18,6 @@ module.exports = {
         heading: ['var(--font-heading)', 'sans-serif'],
         body: ['var(--font-body)', 'sans-serif'],
       },
-      fontSize: {
-        // Boost text-xs from 12px -> 14px
-        xs: ['0.875rem', { lineHeight: '1.25rem' }],
-        // Boost text-sm from 14px -> 16px
-        sm: ['1rem', { lineHeight: '1.5rem' }],
-        // Boost text-base from 16px -> 18px
-        base: ['1.125rem', { lineHeight: '1.75rem' }],
-        // Boost text-lg from 18px -> 20px
-        lg: ['1.25rem', { lineHeight: '1.875rem' }],
-      },
     },
   },
   plugins: [],

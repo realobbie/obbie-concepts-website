@@ -1,4 +1,4 @@
-
+// app/services/page.tsx
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
@@ -141,13 +141,13 @@ export default function ServicesPage() {
         
         {/* Page Header */}
         <div data-aos="fade-down" className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-          <span className="bg-brand-orange/10 text-brand-orange border border-brand-orange/20 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider inline-flex items-center gap-1.5 mb-4">
-            <IconBulb size={14} /> End-To-End Agency Capabilities
+          <span className="bg-brand-orange/10 text-brand-orange border border-brand-orange/20 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider inline-flex items-center gap-1.5 mb-4">
+            <IconBulb size={16} /> End-To-End Agency Capabilities
           </span>
           <h1 className="text-3xl sm:text-5xl font-bold font-heading leading-tight mb-4 text-slate-900 dark:text-white">
             Services Built to Scale Your Brand
           </h1>
-          <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
             From the first idea to the final result, Obbie Concepts brings everything your business needs to grow under one roof. 
             From printing and brand identity to website development, custom software, digital marketing, and lead-generating campaigns, 
             we combine creativity, technology, and strategy to help your business stand out, reach the right audience, and turn opportunities 
@@ -165,10 +165,10 @@ export default function ServicesPage() {
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap shrink-0 ${
+              className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all whitespace-nowrap shrink-0 cursor-pointer ${
                 selectedCategory === category
                   ? 'bg-brand-orange text-white shadow-md shadow-brand-orange/20'
-                  : 'bg-slate-100 dark:bg-[#131B2A] text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800'
+                  : 'bg-slate-100 dark:bg-[#131B2A] text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800'
               }`}
             >
               {category}
@@ -183,7 +183,7 @@ export default function ServicesPage() {
               key={service.id}
               data-aos="fade-up"
               data-aos-delay={(index % 3) * 100}
-              className="group rounded-2xl bg-slate-50 dark:bg-[#131B2A] border border-slate-200 dark:border-slate-800 p-6 flex flex-col justify-between hover:border-brand-orange/40 hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-xl"
+              className="group rounded-2xl bg-slate-50 dark:bg-[#131B2A] border border-slate-200 dark:border-slate-800 p-6 sm:p-7 flex flex-col justify-between hover:border-brand-orange/40 hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-xl"
             >
               <div>
                 {/* Header Icon & Tag */}
@@ -191,27 +191,27 @@ export default function ServicesPage() {
                   <div className="p-3 bg-brand-orange/10 text-brand-orange rounded-xl">
                     {renderIcon(service.iconName)}
                   </div>
-                  <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400 bg-slate-200/70 dark:bg-slate-800/80 px-2.5 py-1 rounded-md">
+                  <span className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300 bg-slate-200/80 dark:bg-slate-800 px-3 py-1 rounded-md">
                     {service.impactMetric}
                   </span>
                 </div>
 
                 {/* Title & Tagline */}
-                <h3 className="text-lg font-bold font-heading text-slate-900 dark:text-white mb-1 group-hover:text-brand-orange transition-colors">
+                <h3 className="text-lg sm:text-xl font-bold font-heading text-slate-900 dark:text-white mb-1 group-hover:text-brand-orange transition-colors">
                   {service.title}
                 </h3>
-                <p className="text-xs font-semibold text-brand-orange mb-3">
+                <p className="text-xs sm:text-sm font-semibold text-brand-orange mb-3">
                   {service.tagline}
                 </p>
-                <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-medium mb-6">
                   {service.summary}
                 </p>
 
                 {/* Core Bullet Points Preview */}
-                <ul className="space-y-2 mb-6">
+                <ul className="space-y-2.5 mb-6">
                   {service.deliverables.slice(0, 3).map((item, i) => (
-                    <li key={i} className="flex items-start gap-2 text-[11px] text-slate-700 dark:text-slate-300">
-                      <IconCheck size={14} className="text-brand-orange shrink-0 mt-0.5" />
+                    <li key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-medium">
+                      <IconCheck size={16} className="text-brand-orange shrink-0 mt-0.5" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -222,9 +222,9 @@ export default function ServicesPage() {
               <div className="pt-4 border-t border-slate-200/60 dark:border-slate-800/60 mt-auto flex items-center justify-between">
                 <button
                   onClick={() => setActiveModalService(service)}
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-orange hover:underline cursor-pointer"
+                  className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-brand-orange hover:underline cursor-pointer"
                 >
-                  Explore Capabilities <IconArrowRight size={14} />
+                  Explore Capabilities <IconArrowRight size={16} />
                 </button>
 
                 <a
@@ -233,10 +233,10 @@ export default function ServicesPage() {
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-400 hover:text-emerald-500 transition-colors"
+                  className="text-slate-400 hover:text-emerald-500 transition-colors p-1"
                   title="Inquire via WhatsApp"
                 >
-                  <IconBrandWhatsapp size={18} />
+                  <IconBrandWhatsapp size={20} />
                 </a>
               </div>
             </div>
@@ -256,15 +256,15 @@ export default function ServicesPage() {
             >
               {/* Sticky / Fixed Header */}
               <div className="flex items-center justify-between p-6 sm:px-8 border-b border-slate-100 dark:border-slate-800 shrink-0 bg-white dark:bg-[#131B2A]">
-                <div className="flex items-center gap-3 pr-10">
-                  <div className="p-2.5 bg-brand-orange/10 text-brand-orange rounded-xl">
+                <div className="flex items-center gap-3.5 pr-10">
+                  <div className="p-3 bg-brand-orange/10 text-brand-orange rounded-xl">
                     {renderIcon(activeModalService.iconName)}
                   </div>
                   <div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-brand-orange block">
+                    <span className="text-xs font-bold uppercase tracking-wider text-brand-orange block">
                       {activeModalService.category}
                     </span>
-                    <h2 className="text-xl sm:text-2xl font-bold font-heading">
+                    <h2 className="text-xl sm:text-2xl font-bold font-heading text-slate-900 dark:text-white">
                       {activeModalService.title}
                     </h2>
                   </div>
@@ -279,7 +279,7 @@ export default function ServicesPage() {
                     type="button"
                     onClick={closeModal}
                     aria-label="Close modal"
-                    className="p-2 bg-slate-100 dark:bg-slate-800 hover:bg-brand-orange hover:text-white text-slate-600 dark:text-slate-300 rounded-full transition-colors cursor-pointer shadow-md"
+                    className="p-2.5 bg-slate-100 dark:bg-slate-800 hover:bg-brand-orange hover:text-white text-slate-600 dark:text-slate-300 rounded-full transition-colors cursor-pointer shadow-md"
                   >
                     <IconX size={20} />
                   </button>
@@ -289,7 +289,7 @@ export default function ServicesPage() {
               {/* Scrollable Body Content */}
               <div className="p-6 sm:p-8 overflow-y-auto space-y-6">
                 {/* Cover Banner */}
-                <div className="relative aspect-video w-full rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800">
+                <div className="relative aspect-video w-full rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-md">
                   <Image
                     src={activeModalService.heroImage}
                     alt={activeModalService.title}
@@ -299,25 +299,25 @@ export default function ServicesPage() {
                 </div>
 
                 {/* Full Description */}
-                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
                   {activeModalService.description}
                 </p>
 
                 {/* Sub-Services Breakdown */}
                 <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">
+                  <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3">
                     Service Offerings & Sub-Modules
                   </h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
                     {activeModalService.subServices.map((sub, i) => (
                       <div
                         key={i}
-                        className="p-3 rounded-xl bg-slate-50 dark:bg-[#0B0F17] border border-slate-200 dark:border-slate-800"
+                        className="p-4 rounded-2xl bg-slate-50 dark:bg-[#0B0F17] border border-slate-200 dark:border-slate-800"
                       >
-                        <h5 className="text-xs font-bold text-brand-orange mb-1">
+                        <h5 className="text-xs sm:text-sm font-bold text-brand-orange mb-1.5">
                           {sub.title}
                         </h5>
-                        <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-normal">
+                        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                           {sub.description}
                         </p>
                       </div>
@@ -327,13 +327,13 @@ export default function ServicesPage() {
 
                 {/* Deliverables List */}
                 <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">
+                  <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3">
                     Key Deliverables
                   </h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                     {activeModalService.deliverables.map((item, i) => (
-                      <div key={i} className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300">
-                        <IconCheck size={14} className="text-brand-orange shrink-0" />
+                      <div key={i} className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-medium">
+                        <IconCheck size={16} className="text-brand-orange shrink-0" />
                         <span>{item}</span>
                       </div>
                     ))}
@@ -341,16 +341,16 @@ export default function ServicesPage() {
                 </div>
 
                 {/* CHECK OUT SAMPLE WORK BANNER */}
-                <div className="p-4 rounded-2xl bg-brand-orange/10 border border-brand-orange/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2.5 bg-brand-orange text-white rounded-xl shrink-0">
-                      <IconPhoto size={20} />
+                <div className="p-4 sm:p-5 rounded-2xl bg-brand-orange/10 border border-brand-orange/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                  <div className="flex items-center gap-3.5">
+                    <div className="p-3 bg-brand-orange text-white rounded-xl shrink-0 shadow-sm">
+                      <IconPhoto size={22} />
                     </div>
                     <div>
-                      <h5 className="text-xs font-bold text-slate-900 dark:text-white">
+                      <h5 className="text-sm font-bold text-slate-900 dark:text-white">
                         Check Out Our Sample Work
                       </h5>
-                      <p className="text-[11px] text-slate-600 dark:text-slate-400">
+                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-0.5">
                         View real project samples, live links, and case studies for {activeModalService.title}.
                       </p>
                     </div>
@@ -359,10 +359,10 @@ export default function ServicesPage() {
                   <Link
                     href={`/samples`}
                     onClick={() => closeModal()}
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-900 dark:text-white text-xs font-bold px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 transition-all shrink-0 shadow-sm"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-900 dark:text-white text-xs sm:text-sm font-bold px-5 py-3 rounded-xl border border-slate-200 dark:border-slate-700 transition-all shrink-0 shadow-sm"
                   >
                     <span>View Samples</span>
-                    <IconExternalLink size={14} />
+                    <IconExternalLink size={16} />
                   </Link>
                 </div>
               </div>
@@ -373,9 +373,9 @@ export default function ServicesPage() {
                 <button
                   type="button"
                   onClick={() => handleShareService(activeModalService)}
-                  className="inline-flex items-center gap-2 text-xs font-bold text-slate-600 dark:text-slate-400 hover:text-brand-orange transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-300 hover:text-brand-orange transition-colors cursor-pointer"
                 >
-                  <IconShare size={16} />
+                  <IconShare size={18} />
                   <span>{copied ? 'Link Copied!' : 'Share Service'}</span>
                 </button>
 
@@ -385,9 +385,9 @@ export default function ServicesPage() {
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-brand-orange text-white px-6 py-2.5 rounded-xl font-bold text-xs hover:bg-brand-orange-hover transition-colors shadow-lg"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-brand-orange text-white px-6 py-3 rounded-xl font-bold text-xs sm:text-sm hover:bg-brand-orange-hover transition-colors shadow-lg cursor-pointer"
                 >
-                  <IconBrandWhatsapp size={16} /> Request Service Quote
+                  <IconBrandWhatsapp size={18} /> Request Service Quote
                 </a>
               </div>
 
@@ -401,13 +401,13 @@ export default function ServicesPage() {
           className="rounded-3xl bg-gradient-to-r from-slate-900 to-[#131B2A] text-white p-8 sm:p-10 border border-slate-800 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-2xl"
         >
           <div className="max-w-xl">
-            <span className="inline-flex items-center gap-1.5 text-brand-orange text-xs font-bold uppercase tracking-wider mb-2">
-              Multi-Service Retainers
+            <span className="inline-flex items-center gap-1.5 text-brand-orange text-xs sm:text-sm font-bold uppercase tracking-wider mb-2">
+              <IconSparkles size={16} /> Multi-Service Retainers
             </span>
-            <h2 className="text-xl sm:text-2xl font-bold font-heading mb-2">
+            <h2 className="text-xl sm:text-3xl font-bold font-heading mb-2">
               Need an Integrated Design, Print & Digital Strategy?
             </h2>
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-medium">
               Combine our graphic design, printing, and digital marketing capabilities under a unified monthly agency retainer.
             </p>
           </div>
@@ -418,7 +418,7 @@ export default function ServicesPage() {
             )}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-brand-orange text-white px-6 py-3 rounded-xl font-bold text-xs hover:bg-brand-orange-hover active:scale-95 transition-all shadow-lg shrink-0"
+            className="inline-flex items-center gap-2 bg-brand-orange text-white px-6 py-3.5 rounded-xl font-bold text-xs sm:text-sm hover:bg-brand-orange-hover active:scale-95 transition-all shadow-lg shrink-0 cursor-pointer"
           >
             <IconBrandWhatsapp size={18} /> Discuss Monthly Retainer
           </a>
