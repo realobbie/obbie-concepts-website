@@ -5,17 +5,27 @@ export async function POST(req: Request) {
     let browser;
 
     if (process.env.NODE_ENV === "production") {
-      // Production: @sparticuz/chromium + puppeteer-core for Vercel
+      // Production on Vercel: load @sparticuz/chromium tarpack release
       const chromium = await import("@sparticuz/chromium").then((m) => m.default);
       const puppeteer = await import("puppeteer-core").then((m) => m.default);
 
+      // Disable graphics mode safely without TypeScript errors
+      if (typeof (chromium as any).setGraphicsMode === "function") {
+        (chromium as any).setGraphicsMode(false);
+      }
+
+      // Download/extract Chromium binary from official release tarpack
+      const executablePath = await chromium.executablePath(
+        "https://github.com/Sparticuz/chromium/releases/download/v131.0.1/chromium-v131.0.1-pack.tar"
+      );
+
       browser = await puppeteer.launch({
         args: chromium.args,
-        executablePath: await chromium.executablePath(),
+        executablePath,
         headless: true,
       });
     } else {
-      // Local Development: Fall back to local Chrome or Edge executable
+      // Local development fallback
       const puppeteer = await import("puppeteer-core").then((m) => m.default);
 
       browser = await puppeteer.launch({
@@ -30,7 +40,7 @@ export async function POST(req: Request) {
 
     const page = await browser.newPage();
 
-    // Insert your document HTML / page rendering logic here
+    // Set your HTML or navigation
     await page.setContent("<h1>Obbie Concepts Invoice</h1>");
 
     const pdfUint8Array = await page.pdf({
@@ -40,7 +50,6 @@ export async function POST(req: Request) {
 
     await browser.close();
 
-    // Convert Uint8Array to Node Buffer so NextResponse accepts it
     const pdfBuffer = Buffer.from(pdfUint8Array);
 
     return new NextResponse(pdfBuffer, {
@@ -52,7 +61,7 @@ export async function POST(req: Request) {
   } catch (error: any) {
     console.error("PDF Generation Error:", error);
     return NextResponse.json(
-      { error: "Failed to generate PDF", details: error.message },
+      { error: "Failed to generate PDF", details: error?.message || String(error) },
       { status: 500 }
     );
   }
