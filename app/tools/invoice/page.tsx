@@ -124,7 +124,6 @@ export default function DocumentGeneratorPage() {
   const vatAmount = taxableAmount * (vatRate / 100);
   const grandTotal = taxableAmount + vatAmount;
 
-  // PDF Generator execution using Server-Side Puppeteer
   const handleDownloadPdf = async () => {
     const element = document.getElementById('printable-invoice');
     if (!element) return;
@@ -133,16 +132,37 @@ export default function DocumentGeneratorPage() {
       setIsDownloading(true);
 
       const clone = element.cloneNode(true) as HTMLElement;
-      
-      // Force logo path to public/assets/favvy.png
-      // Force logo path to absolute production URL so Puppeteer can load it over the network
-      const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.obbieconcepts.com';
-      const specificLogoUrl = `${baseUrl}/assets/favvy.png`;
-      
+
+      // 1. Fix Logo: Point directly to the static asset path with absolute domain for Puppeteer
+      const specificLogoUrl = 'https://ehavbycolmcoliwghfjm.supabase.co/storage/v1/object/public/ocw-bucket/favvy.png';
       const images = clone.querySelectorAll('img');
       images.forEach((img) => {
         img.setAttribute('src', specificLogoUrl);
+        img.setAttribute('width', '32');
+        img.setAttribute('height', '32');
       });
+
+      // 2. Add faint underlines to the billed-to secondary details (address/KRA PIN area)
+      // We look for elements on the right side of the billed-to section and add bottom borders
+      const billedToRightSide = clone.querySelectorAll('.text-right, [class*="text-right"]');
+      billedToRightSide.forEach((el) => {
+        const paragraphs = el.querySelectorAll('p, span');
+        paragraphs.forEach((p) => {
+          if (p.textContent?.includes('Kenya') || p.textContent?.includes('P0')) {
+            p.classList.add('border-b', 'border-slate-200', 'pb-1', 'mb-1');
+          }
+        });
+      });
+
+      // 3. Fix Terms & Notes spacing so text isn't cramped at the top
+      const notesSection = clone.querySelector('.bg-slate-50, [class*="bg-slate"], [class*="rounded"]');
+      if (notesSection) {
+        // Find the notes container and ensure it has proper padding
+        const textContainer = notesSection.querySelector('p, div');
+        if (textContainer) {
+          textContainer.classList.add('pt-2', 'block');
+        }
+      }
 
       const invoiceHtml = `
         <!DOCTYPE html>
@@ -351,7 +371,7 @@ export default function DocumentGeneratorPage() {
                 </span>
               </div>
               <p className="text-[11px] text-slate-500 max-w-xs">
-                Design • Branding • Printing • Digital Marketing • Software Development
+                Design • Branding • Printing • Digital Marketing • Web Development
               </p>
               <p className="text-[11px] text-slate-600 mt-2 font-medium">
                 Zion Mall Building, Off Malaba Rd, Eldoret, Kenya<br />
@@ -546,6 +566,7 @@ export default function DocumentGeneratorPage() {
                 </h4>
                 <p className="text-slate-600"><strong>Paybill:</strong> 542542 (I & M Bank)</p>
                 <p className="text-slate-600"><strong>Account No:</strong> 464232</p>
+                <p className="text-slate-600"><strong>Account Name:</strong> Obbie Concepts</p>
               </div>
 
               <div>
