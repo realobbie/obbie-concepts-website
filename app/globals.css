@@ -62,6 +62,15 @@ body {
 }
 
 
+/* Globals.css */
+
+/* Scale up the base font size for small/mobile screens */
+@media (max-width: 640px) {
+  html {
+    font-size: 112.5%; /* Increases base font scale by ~12.5% on mobile */
+  }
+}
+
 
 /* =========================================================
    SUBTLE GRID TEXTURE
