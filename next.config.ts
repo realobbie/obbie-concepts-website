@@ -2,7 +2,9 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   // Allow phone testing on local network
-  allowedDevOrigins: ['192.168.18.5'],
+  //allowedDevOrigins: ['192.168.18.5'],
+  // Required for Puppeteer / Chromium on Next.js App Router
+  serverExternalPackages: ["puppeteer-core", "@sparticuz/chromium"],
   images: {
     remotePatterns: [
       {
@@ -17,6 +19,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  
 };
 
 export default nextConfig;
