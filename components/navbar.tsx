@@ -105,8 +105,8 @@ export default function Navbar() {
               <span className="font-heading font-extrabold text-lg sm:text-xl text-brand-navy dark:text-white tracking-tight leading-none">
                 OBBIE <span className="text-brand-orange">CONCEPTS</span>
               </span>
-              <span className="text-[10px] sm:text-[11px] font-semibold text-slate-500 dark:text-slate-400 tracking-wider uppercase mt-1">
-                Digital Agency &amp; SaaS
+              <span className="text-[8px] sm:text-[9.5px] font-semibold text-slate-500 dark:text-slate-400 tracking-wider uppercase mt-1">
+                Bringing Abstract To Reality
               </span>
             </div>
           </Link>
