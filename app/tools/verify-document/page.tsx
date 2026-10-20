@@ -10,7 +10,8 @@ import {
   IconShieldX, 
   IconLoader2, 
   IconCheck, 
-  IconArrowLeft 
+  IconArrowLeft,
+  IconDownload 
 } from '@tabler/icons-react';
 
 interface DocumentRecord {
@@ -29,6 +30,7 @@ function VerificationContent() {
 
   const [loading, setLoading] = useState(true);
   const [doc, setDoc] = useState<DocumentRecord | null>(null);
+  const [isDownloading, setIsDownloading] = useState(false);
 
   useEffect(() => {
     async function fetchDocument() {
@@ -58,6 +60,30 @@ function VerificationContent() {
       style: 'currency',
       currency: currency || 'KES',
     }).format(val);
+  };
+
+  const handleDownloadCopy = async () => {
+    if (!doc) return;
+    try {
+      setIsDownloading(true);
+      const res = await fetch(`/api/download-document?no=${encodeURIComponent(doc.doc_number)}&type=${encodeURIComponent(doc.doc_type)}`);
+      if (!res.ok) throw new Error('Failed to download document');
+
+      const blob = await res.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${doc.doc_number}_Obbie_Concepts.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      window.URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error('Download error:', err);
+      alert('Could not download the official PDF copy.');
+    } finally {
+      setIsDownloading(false);
+    }
   };
 
   if (loading) {
@@ -118,6 +144,24 @@ function VerificationContent() {
               <span className="font-bold uppercase text-emerald-600 dark:text-emerald-400">{doc.status}</span>
             </div>
           </div>
+
+          {/* Download Official PDF Button */}
+          <button
+            type="button"
+            disabled={isDownloading}
+            onClick={handleDownloadCopy}
+            className="w-full mb-4 bg-brand-orange hover:bg-orange-600 text-white font-bold py-2.5 px-4 rounded-xl shadow-md transition-all flex items-center justify-center gap-2 text-xs cursor-pointer disabled:opacity-50"
+          >
+            {isDownloading ? (
+              <>
+                <IconLoader2 size={16} className="animate-spin" /> Downloading PDF...
+              </>
+            ) : (
+              <>
+                <IconDownload size={16} /> Download Official PDF Copy
+              </>
+            )}
+          </button>
         </div>
       ) : (
         <div className="text-center">

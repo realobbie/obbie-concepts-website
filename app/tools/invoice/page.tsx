@@ -22,7 +22,7 @@ interface LineItem {
   rate: number;
 }
 
-type DocumentType = 'INVOICE' | 'QUOTATION';
+type DocumentType = 'INVOICE' | 'QUOTATION' | 'RECEIPT';
 
 export default function DocumentGeneratorPage() {
   const [isDownloading, setIsDownloading] = useState(false);
@@ -32,9 +32,12 @@ export default function DocumentGeneratorPage() {
     return Math.floor(1000 + Math.random() * 9000).toString();
   };
 
-  // Helper to generate initial document number: e.g., INV-202610-3950
+  // Helper to generate initial document number: e.g., INV-202610-3950, QT-..., REC-...
   const getInitialDocNumber = (type: DocumentType) => {
-    const prefix = type === 'INVOICE' ? 'INV' : 'QT';
+    let prefix = 'INV';
+    if (type === 'QUOTATION') prefix = 'QT';
+    if (type === 'RECEIPT') prefix = 'REC';
+
     const now = new Date();
     const year = now.getFullYear();
     const month = String(now.getMonth() + 1).padStart(2, '0');
@@ -62,10 +65,12 @@ export default function DocumentGeneratorPage() {
     'Thank you for working with Obbie Concepts! Payment is due within 14 days.'
   );
 
-  // Switch between Invoice & Quotation
+  // Switch between Invoice, Quotation & Receipt
   const handleDocTypeChange = (newType: DocumentType) => {
     setDocType(newType);
-    const prefix = newType === 'INVOICE' ? 'INV' : 'QT';
+    let prefix = 'INV';
+    if (newType === 'QUOTATION') prefix = 'QT';
+    if (newType === 'RECEIPT') prefix = 'REC';
     
     setDocNumber((prev) => {
       const parts = prev.split('-');
@@ -77,6 +82,8 @@ export default function DocumentGeneratorPage() {
 
     if (newType === 'QUOTATION') {
       setNotes('This quotation is valid for 30 days from the date of issue. Prices are subject to project scope confirmation.');
+    } else if (newType === 'RECEIPT') {
+      setNotes('Payment received in full. Thank you for your business with Obbie Concepts!');
     } else {
       setNotes('Thank you for working with Obbie Concepts! Payment is due within 14 days.');
     }
@@ -103,7 +110,6 @@ export default function DocumentGeneratorPage() {
   };
 
   const handleRemoveItem = (id: string) => {
-    // Allows removing items down to 0 items if desired
     setItems(items.filter((item) => item.id !== id));
   };
 
@@ -133,7 +139,6 @@ export default function DocumentGeneratorPage() {
 
       const clone = element.cloneNode(true) as HTMLElement;
 
-      // 1. Fix Logo: Point directly to the static asset path with absolute domain for Puppeteer
       const specificLogoUrl = 'https://ehavbycolmcoliwghfjm.supabase.co/storage/v1/object/public/ocw-bucket/favvy.png';
       const images = clone.querySelectorAll('img');
       images.forEach((img) => {
@@ -142,8 +147,6 @@ export default function DocumentGeneratorPage() {
         img.setAttribute('height', '32');
       });
 
-      // 2. Add faint underlines to the billed-to secondary details (address/KRA PIN area)
-      // We look for elements on the right side of the billed-to section and add bottom borders
       const billedToRightSide = clone.querySelectorAll('.text-right, [class*="text-right"]');
       billedToRightSide.forEach((el) => {
         const paragraphs = el.querySelectorAll('p, span');
@@ -154,10 +157,8 @@ export default function DocumentGeneratorPage() {
         });
       });
 
-      // 3. Fix Terms & Notes spacing so text isn't cramped at the top
       const notesSection = clone.querySelector('.bg-slate-50, [class*="bg-slate"], [class*="rounded"]');
       if (notesSection) {
-        // Find the notes container and ensure it has proper padding
         const textContainer = notesSection.querySelector('p, div');
         if (textContainer) {
           textContainer.classList.add('pt-2', 'block');
@@ -182,7 +183,8 @@ export default function DocumentGeneratorPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           html: invoiceHtml,
-          filename: `${docNumber || 'Document'}_Obbie_Concepts`
+          filename: `${docNumber || 'Document'}_Obbie_Concepts`,
+          documentType: docType === 'RECEIPT' ? 'receipt' : 'invoice'
         }),
       });
 
@@ -228,8 +230,11 @@ export default function DocumentGeneratorPage() {
 
       await handleDownloadPdf();
 
-      // Generate next random document number
-      const prefix = docType === 'INVOICE' ? 'INV' : 'QT';
+      // Generate next random document number based on active type
+      let prefix = 'INV';
+      if (docType === 'QUOTATION') prefix = 'QT';
+      if (docType === 'RECEIPT') prefix = 'REC';
+
       const now = new Date();
       const year = now.getFullYear();
       const month = String(now.getMonth() + 1).padStart(2, '0');
@@ -255,6 +260,12 @@ export default function DocumentGeneratorPage() {
     window.print();
   };
 
+  const getDocTitleDisplay = () => {
+    if (docType === 'INVOICE') return 'Invoice Generator';
+    if (docType === 'QUOTATION') return 'Quotation Generator';
+    return 'Receipt Generator';
+  };
+
   return (
     <main className="min-h-screen bg-slate-100 dark:bg-[#0B0F17] text-slate-900 dark:text-slate-100 pt-6 sm:pt-10 pb-20 print:p-0 print:bg-white print:min-h-0">
       
@@ -265,7 +276,7 @@ export default function DocumentGeneratorPage() {
           <div>
             <h1 className="text-xl sm:text-2xl font-bold font-heading flex items-center gap-2">
               <IconFileText className="text-brand-orange" size={24} /> 
-              {docType === 'INVOICE' ? 'Invoice Generator' : 'Quotation Generator'}
+              {getDocTitleDisplay()}
             </h1>
           </div>
 
@@ -293,6 +304,17 @@ export default function DocumentGeneratorPage() {
                 }`}
               >
                 Quotation
+              </button>
+              <button
+                type="button"
+                onClick={() => handleDocTypeChange('RECEIPT')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                  docType === 'RECEIPT'
+                    ? 'bg-brand-orange text-white shadow-sm'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'
+                }`}
+              >
+                Receipt
               </button>
             </div>
 
@@ -350,7 +372,7 @@ export default function DocumentGeneratorPage() {
           ))}
         </div>
 
-        {/* THE DOCUMENT CARD (INVOICE / QUOTATION) */}
+        {/* THE DOCUMENT CARD */}
         <div 
           id="printable-invoice" 
           className="bg-white text-slate-900 rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-2xl print:shadow-none print:border-none print:p-0 print:m-0"
@@ -387,7 +409,7 @@ export default function DocumentGeneratorPage() {
               <div className="space-y-1 text-xs">
                 <div className="flex justify-end items-center gap-2">
                   <span className="font-bold text-slate-500">
-                    {docType === 'INVOICE' ? 'Invoice No:' : 'Quotation No:'}
+                    {docType === 'INVOICE' ? 'Invoice No:' : docType === 'QUOTATION' ? 'Quotation No:' : 'Receipt No:'}
                   </span>
                   <input
                     type="text"
@@ -397,7 +419,9 @@ export default function DocumentGeneratorPage() {
                   />
                 </div>
                 <div className="flex justify-end items-center gap-2">
-                  <span className="font-bold text-slate-500">Date:</span>
+                  <span className="font-bold text-slate-500">
+                    {docType === 'RECEIPT' ? 'Payment Date:' : 'Date:'}
+                  </span>
                   <input
                     type="date"
                     value={issueDate}
@@ -405,17 +429,19 @@ export default function DocumentGeneratorPage() {
                     className="font-medium text-slate-900 text-right bg-transparent outline-none border-b border-slate-200 focus:border-brand-orange print:border-none"
                   />
                 </div>
-                <div className="flex justify-end items-center gap-2">
-                  <span className="font-bold text-slate-500">
-                    {docType === 'INVOICE' ? 'Due Date:' : 'Valid Until:'}
-                  </span>
-                  <input
-                    type="date"
-                    value={dueDate}
-                    onChange={(e) => setDueDate(e.target.value)}
-                    className="font-medium text-slate-900 text-right bg-transparent outline-none border-b border-slate-200 focus:border-brand-orange print:border-none"
-                  />
-                </div>
+                {docType !== 'RECEIPT' && (
+                  <div className="flex justify-end items-center gap-2">
+                    <span className="font-bold text-slate-500">
+                      {docType === 'INVOICE' ? 'Due Date:' : 'Valid Until:'}
+                    </span>
+                    <input
+                      type="date"
+                      value={dueDate}
+                      onChange={(e) => setDueDate(e.target.value)}
+                      className="font-medium text-slate-900 text-right bg-transparent outline-none border-b border-slate-200 focus:border-brand-orange print:border-none"
+                    />
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -423,7 +449,7 @@ export default function DocumentGeneratorPage() {
           {/* Client Info */}
           <div className="bg-slate-50 p-5 rounded-2xl mb-6 border border-slate-100">
             <h3 className="text-[10px] font-bold uppercase tracking-wider text-brand-orange mb-2">
-              {docType === 'INVOICE' ? 'Billed To:' : 'Quotation For:'}
+              {docType === 'INVOICE' ? 'Billed To:' : docType === 'QUOTATION' ? 'Quotation For:' : 'Received From:'}
             </h3>
             <div className="grid grid-cols-2 gap-4 text-xs">
               <div className="space-y-1">
@@ -571,7 +597,7 @@ export default function DocumentGeneratorPage() {
 
               <div>
                 <label className="block text-[10px] font-bold uppercase text-slate-400 mb-1">
-                  {docType === 'INVOICE' ? 'Invoice Terms & Notes' : 'Quotation Terms & Conditions'}
+                  {docType === 'INVOICE' ? 'Invoice Terms & Notes' : docType === 'QUOTATION' ? 'Quotation Terms & Conditions' : 'Receipt Notes'}
                 </label>
                 <textarea
                   rows={2}
@@ -617,7 +643,7 @@ export default function DocumentGeneratorPage() {
 
                 <div className="flex justify-between py-2 border-t-2 border-slate-900 text-sm">
                   <span className="font-extrabold text-slate-900">
-                    {docType === 'INVOICE' ? 'Grand Total:' : 'Estimated Total:'}
+                    {docType === 'INVOICE' ? 'Grand Total:' : docType === 'QUOTATION' ? 'Estimated Total:' : 'Total Paid:'}
                   </span>
                   <span className="font-extrabold text-brand-orange">{formatCurrency(grandTotal)}</span>
                 </div>
@@ -640,7 +666,7 @@ export default function DocumentGeneratorPage() {
             </div>
           </div>
 
-          <div className="mt-8 pt-4 border-t border-slate-100 text-center text-[10px] text-slate-400">
+          <div className="max-w-5xl mx-auto mt-8 pt-4 border-t border-slate-100 text-center text-[10px] text-slate-400">
             <p>Obbie Concepts • Zion Mall Building, Eldoret • www.obbieconcepts.com</p>
           </div>
         </div>

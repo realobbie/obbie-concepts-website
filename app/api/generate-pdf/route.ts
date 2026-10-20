@@ -1,10 +1,11 @@
+// app/api/generate-pdf/route.ts
 import { NextResponse } from "next/server";
+import { createClient } from "@supabase/supabase-js";
 
 export async function POST(req: Request) {
   try {
-    // 1. Receive the HTML and filename sent from your frontend handleDownloadPdf
     const body = await req.json();
-    const { html, filename } = body;
+    const { html, filename, documentType } = body;
 
     let browser;
 
@@ -40,11 +41,7 @@ export async function POST(req: Request) {
 
     const page = await browser.newPage();
 
-    // 2. Set the exact HTML received from your frontend component
-    // We use waitUntil: "load" and add a short network idle timeout so Tailwind CDN finishes loading styles
-    await page.setContent(html || "<h1>Invoice</h1>", { waitUntil: "load" });
-    
-    // Give Tailwind CDN a brief moment to evaluate classes if needed
+    await page.setContent(html || "<h1>Document</h1>", { waitUntil: "load" });
     await new Promise((r) => setTimeout(r, 1000));
 
     const pdfUint8Array = await page.pdf({
@@ -56,7 +53,37 @@ export async function POST(req: Request) {
 
     const pdfBuffer = Buffer.from(pdfUint8Array);
     const safeFilename = filename || "Document_Obbie_Concepts";
+    
+    // Dynamic folder mapping based on document type
+    let docFolder = "invoices";
+    const typeLower = (documentType || "").toLowerCase();
+    if (typeLower === "receipt") {
+      docFolder = "receipts";
+    } else if (typeLower === "quotation") {
+      docFolder = "quotations";
+    }
 
+    const storagePath = `${docFolder}/${safeFilename}.pdf`;
+
+    // 1. Save / Upload PDF copy to Supabase Storage Bucket
+    try {
+      const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+      const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+      if (supabaseUrl && supabaseKey) {
+        const supabase = createClient(supabaseUrl, supabaseKey);
+        
+        await supabase.storage.from("ocw-bucket").upload(storagePath, pdfBuffer, {
+          contentType: "application/pdf",
+          upsert: true,
+        });
+      }
+    } catch (storageErr) {
+      console.error("Supabase Storage Upload Warning:", storageErr);
+      // Non-blocking: allows download to proceed even if cloud backup fails
+    }
+
+    // 2. Return PDF stream to client for immediate download
     return new NextResponse(pdfBuffer, {
       headers: {
         "Content-Type": "application/pdf",
