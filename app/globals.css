@@ -1,0 +1,163 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-brand-orange: #f15a24;
+  --color-brand-orange-hover: #d94a18;
+
+  --color-brand-navy: #0f172a;
+  --color-brand-navy-light: #1e293b;
+
+  --font-heading: var(--font-heading), sans-serif;
+  --font-body: var(--font-body), sans-serif;
+}
+
+/* =========================================================
+   THEME VARIABLES
+   ========================================================= */
+
+:root {
+  --background: #fafafa;
+  --foreground: #0f172a;
+
+  --radial-orange: rgba(242, 80, 34, 0.10);
+  --radial-navy: rgba(35, 65, 99, 0.13);
+
+  --grid-color: rgba(35, 65, 99, 0.035);
+}
+
+.dark {
+  --background: #0b0f17;
+  --foreground: #f8fafc;
+
+  --radial-orange: rgba(242, 80, 34, 0.14);
+  --radial-navy: rgba(35, 65, 99, 0.22);
+
+  --grid-color: rgba(255, 255, 255, 0.025);
+}
+
+/* =========================================================
+   BODY
+   ========================================================= */
+
+body {
+  margin: 0;
+
+  background-color: var(--background);
+
+  color: var(--foreground);
+
+  font-family: var(--font-body);
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+
+  position: relative;
+
+  min-height: 100vh;
+
+  overflow-x: hidden;
+}
+
+
+
+/* =========================================================
+   SUBTLE GRID TEXTURE
+   =========================================================
+
+body::after {
+  content: "";
+
+  position: fixed;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  z-index: -1;
+
+  opacity: 0.8;
+
+  background-image:
+    linear-gradient(
+      var(--grid-color) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      var(--grid-color) 1px,
+      transparent 1px
+    );
+
+  background-size: 42px 42px;
+
+  mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    rgba(0, 0, 0, 0.7) 45%,
+    transparent 90%
+  );
+
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    rgba(0, 0, 0, 0.7) 45%,
+    transparent 90%
+  );
+}
+
+ */
+
+/* =========================================================
+   PRINT STYLES
+   ========================================================= */
+
+@media print {
+  header,
+  footer,
+  nav,
+  .print\:hidden {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    background-image: none !important;
+
+    color: #000000 !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  body::before,
+  body::after {
+    display: none !important;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 12mm 15mm;
+  }
+
+  #printable-invoice {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  input,
+  textarea,
+  select {
+    border: none !important;
+    outline: none !important;
+    background: transparent !important;
+    resize: none !important;
+  }
+}
