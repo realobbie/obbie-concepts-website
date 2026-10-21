@@ -19,16 +19,16 @@ export interface FeaturedSolution {
 }
 
 const featuredSolutions: FeaturedSolution[] = [
-  {
+ {
     id: 'invoicing-saas',
-    name: 'Custom Invoicing SaaS',
-    img: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&auto=format&fit=crop&q=80',
-    description: 'Automate your billing, recurring client invoices, and payment tracking with a custom-built, white-label invoicing platform tailored to your workflow.',
+    name: 'Obbie Invoice, Quotation & Receipt Generator',
+    img: '/assets/oc/quotation-generator.webp',
+    description: 'Eliminate manual paperwork and billing friction with our secure, lightning-fast document generator. Instantly produce professional, branded PDFs for invoices, quotes, and receipts backed by tamper-proof QR verification and automated cloud archiving.',
     highlights: [
-      'Automated recurring client billing & reminders',
-      'Multi-currency & localized tax calculations',
-      'PDF invoice generation & client portals',
-      'Integration with Stripe, M-Pesa, or PayPal'
+      'Instant vector PDF generation for invoices, quotes & receipts',
+      'Tamper-proof QR code verification for absolute document authenticity',
+      'Secure automated cloud archival & record tracking via Supabase',
+      'Password-protected admin access & fully responsive mobile workflow'
     ]
   },
   {

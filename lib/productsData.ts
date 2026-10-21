@@ -25,107 +25,62 @@ export const PRODUCT_CATEGORIES = [
 ] as const;
 
 export const PRODUCTS_DATA: ProductItem[] = [
-  {
+{
     id: '1',
-    slug: 'invoicex-cloud-invoicing',
-    title: 'InvoiceX Enterprise',
-    subtitle: 'Automated Billing & Recurring Invoicing Engine',
+    slug: 'obbie-invoice-generator',
+    title: 'Obbie Invoice Generator',
+    subtitle: 'Lightning-Fast Document Creation, QR Verification & Secure Cloud Archiving',
     category: 'SaaS Platforms',
-    description: 'A cloud-based invoicing platform built for SMEs to automate recurring billing, tax calculations, and multi-currency payments.',
+    description: 'A custom-built billing and document generation engine that lets businesses instantly create, verify, and archive secure professional invoices, quotations, and receipts.',
     longDescription: [
-      'InvoiceX was built to solve payment reconciliation friction for growing regional businesses. It automates recurring invoice generation, integrates local mobile payment gateways (like M-Pesa) alongside credit card processors, and tracks outstanding balances in real time.',
-      'Designed with high-concurrency microservices, the platform generates PDF statements on the fly and dispatches automated SMS/Email payment reminders to improve cash flow cycles.'
+      'We built the Obbie Invoice Generator out of a direct need to eliminate the back-and-forth friction of manual billing, lost paperwork, and fake payment receipts. Whether you are billing a corporate client or issuing a point-of-sale receipt, our platform generates crisp, branded PDF documents instantly.',
+      'What sets it apart is its built-in trust and security architecture. Every generated document embeds a verifiable QR code linked to a secure cloud-archived ledger in Supabase. Clients and auditors can scan the code to instantly verify authenticity, while your team gets a password-protected powerhouse to keep your cash flow organized and tamper-proof.'
     ],
-    coverImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop',
+    coverImage: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=1200&auto=format&fit=crop', // You can swap this with a screenshot of your actual tool later
     screenshots: [
-      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=1200&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1200&auto=format&fit=crop',
     ],
     features: [
-      'Automated M-Pesa & Card Payment Reconciliation',
-      'Multi-currency Invoice Generation & PDF Export',
-      'Automated Reminders via SMS & WhatsApp API',
-      'Client Self-Service Payment Portal'
+      'Instant PDF Generation for Invoices, Quotes & Receipts',
+      'Tamper-Proof QR Code Authenticity & Verification',
+      'Secure Automated Cloud Archiving (Supabase Backed)',
+      'Password-Protected Admin Portal & Mobile-First Design'
     ],
-    demoUrl: 'https://example.com/demo/invoicex',
+    demoUrl: '/tools/invoice',
     status: 'Live',
     featured: true,
   },
   {
     id: '2',
-    slug: 'nexus-logistics-app',
-    title: 'Nexus Driver & Fleet Portal',
-    subtitle: 'Real-time Cargo Tracking & Dispatch System',
-    category: 'Mobile Apps',
-    description: 'Cross-platform mobile application and web portal for logistics dispatchers and fleet drivers with real-time GPS telemetry.',
+    slug: 'citysearch',
+    title: 'citySearch',
+    subtitle: 'Get Found by Customers, Grow Your Visibility & Connect with Your Next Customer',
+    category: 'SaaS Platforms',
+    description: 'A hyperlocal business discovery platform that helps customers find businesses across Kenya, explore their services, and connect directly through phone calls, WhatsApp, and Google Maps.',
     longDescription: [
-      'Nexus simplifies complex supply chain handoffs by pairing an intuitive mobile app for drivers with an analytics-heavy dashboard for dispatchers.',
-      'Drivers receive optimized routing, electronic Proof of Delivery (e-POD) signatures, and offline job sync when driving through low-connectivity regions.'
+      'We built citySearch to make finding local businesses easier and more convenient. Whether someone is searching for a restaurant, a plumber, a retail shop, or a professional service, citySearch helps them discover relevant businesses, explore their profiles, view photos, and read available customer reviews without the frustration of searching through irrelevant results.',
+      'For business owners, citySearch is an opportunity to get discovered by potential customers actively searching for products and services. Showcase your business, highlight what you offer, and make it easier for customers to reach you through phone calls, WhatsApp, and Google Maps directions. Developed by Obbie Concepts, citySearch is built to strengthen local commerce by helping businesses improve their online visibility and connect with more customers.',
+      'Your next customer could already be searching for what you offer. Give them a better chance of finding you. Register your business on citySearch for free and start building your digital presence today.'
     ],
-    coverImage: 'https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?q=80&w=1200&auto=format&fit=crop',
+    coverImage: '/assets/citysearch/citysearch-homepage.webp',
     screenshots: [
-      'https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?q=80&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?q=80&w=1200&auto=format&fit=crop'
+      '/assets/citysearch/citysearch-homepage.webp',
+      '/images/projects/citysearch/citysearch-search-results.png',
+      '/images/projects/citysearch/citysearch-business-profile.png',
     ],
     features: [
-      'Offline-First Data Syncing for Mobile Drivers',
-      'Live GPS Fleet Location & Telemetry',
-      'Digital Signature & Image Proof of Delivery',
-      'Route Optimization Engine'
+      'Hyperlocal Business Discovery Across Kenya',
+      'Business Profiles Featuring Services, Photos & Customer Reviews',
+      'Direct Customer Connections Through Phone Calls & WhatsApp',
+      'Google Maps Directions for Easy Business Location Discovery',
+      'Improved Online Visibility for Local Businesses',
+      'Mobile-Friendly Business Discovery Experience',
+      'Free Business Registration to Help You Get Started'
     ],
-    demoUrl: 'https://example.com/demo/nexus',
+    demoUrl: 'https://citysearch.co.ke',
     status: 'Live',
     featured: true,
   },
-  {
-    id: '3',
-    slug: 'lumina-brand-identity-system',
-    title: 'Lumina Corporate Brand System',
-    subtitle: 'Complete Visual Identity & 3D Packaging Mockups',
-    category: 'Brand Systems',
-    description: 'Full identity design, typography guidelines, vector icon sets, and high-resolution 3D product packaging mockups for Lumina Organics.',
-    longDescription: [
-      'We crafted a modern, organic brand visual system for Lumina. Beyond logo mark design, we engineered scalable brand guidelines covering print design, digital design tokens, and photorealistic 3D packaging renders.',
-      'The identity system was delivered with complete digital asset management guidelines and UI kit components.'
-    ],
-    coverImage: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=1200&auto=format&fit=crop',
-    screenshots: [
-      'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?q=80&w=1200&auto=format&fit=crop'
-    ],
-    features: [
-      'Full Logo Guidelines & Vector Formats',
-      '3D Product Packaging Renders & Mockups',
-      'Figma UI Design System & Component Library',
-      'Stationery & Marketing Collateral Templates'
-    ],
-    status: 'Case Study Only',
-  },
-  {
-    id: '4',
-    slug: 'pulse-commerce-headless-store',
-    title: 'Pulse Commerce Storefront',
-    subtitle: 'High-Performance Headless E-Commerce Platform',
-    category: 'E-Commerce',
-    description: 'A Next.js powered sub-second online shopping platform with dynamic inventory management and localized checkout integrations.',
-    longDescription: [
-      'Pulse Commerce was engineered to handle high-volume sales spikes. Built using Next.js App Router and dynamic server rendering, product pages load under 400ms.',
-      'Includes custom cart drawer interactions, integrated search filtering, and one-step checkout.'
-    ],
-    coverImage: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=1200&auto=format&fit=crop',
-    screenshots: [
-      'https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop'
-    ],
-    features: [
-      'Sub-Second Page Load Times',
-      'Dynamic Cart Drawer & Instant Checkout',
-      'Inventory Sync & Order Notification Engine',
-      'SEO-Optimized Product Architecture'
-    ],
-    demoUrl: 'https://example.com/demo/pulse',
-    status: 'Live',
-  }
 ];

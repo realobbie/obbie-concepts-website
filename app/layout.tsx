@@ -1,5 +1,7 @@
 // app/layout.tsx
 import type { Metadata } from 'next';
+import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { fontHeading, fontBody } from './fonts';
 import './globals.css';
 
@@ -16,7 +18,7 @@ export const metadata: Metadata = {
     template: '%s | Obbie Concepts',
   },
   description:
-    'Obbie Concepts is a premier creative digital agency in Eldoret, Kenya. We specialize in custom web application development, corporate brand identity, digital marketing, Meta ad funnels, and large-format printing.',
+    'Obbie Concepts is a premier creative digital agency in Eldoret, Kenya. We specialize in custom web application development, corporate brand identity, digital marketing, flyers, brochures, custom merchandise branding, and large-format printing.',
   keywords: [
     'Obbie Concepts',
     'Graphic Design Eldoret',
@@ -30,6 +32,16 @@ export const metadata: Metadata = {
     'Meta Ads Agency Kenya',
     'Custom Invoicing SaaS Kenya',
     'Corporate Identity Design Kenya',
+    // --- Local Print & Promotional Keywords ---
+    'Flyer Design & Printing Eldoret',
+    'Brochure Printing Kenya',
+    'Poster Design Eldoret',
+    'Funeral Program Printing Kenya',
+    'Hoodie Branding Eldoret',
+    'Mug & Cup Branding Kenya',
+    'Campaign Posters Printing Kenya',
+    'Banner Printing Eldoret',
+    'Custom Apparel Branding Kenya',
   ],
   authors: [{ name: 'Obbie Concepts', url: SITE_URL }],
   creator: 'Obbie Concepts',
@@ -96,8 +108,6 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem
         >
-          
-
           {/* ================= SITE CONTENT ================= */}
           <div className="relative z-10 flex flex-col min-h-screen">
             <Navbar />
@@ -107,6 +117,10 @@ export default function RootLayout({
 
             <Footer />
           </div>
+
+          {/* Vercel Monitoring */}
+          <Analytics />
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>

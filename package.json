@@ -12,6 +12,8 @@
     "@sparticuz/chromium": "^153.0.0",
     "@supabase/supabase-js": "^2.118.0",
     "@tabler/icons-react": "^3.48.0",
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
     "aos": "^2.3.4",
     "html2canvas": "^1.4.1",
     "jspdf": "^4.2.1",

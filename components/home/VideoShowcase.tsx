@@ -61,7 +61,7 @@ export default function VideoShowcase() {
           
           <div className="w-full max-w-4xl aspect-video rounded-2xl overflow-hidden shadow-2xl bg-black">
             <iframe
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
+              src="https://www.youtube.com/watch?v=XU2Y-ohB5No?autoplay=1"
               title="Obbie Concepts Agency Reel"
               className="w-full h-full border-0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

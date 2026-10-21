@@ -35,30 +35,79 @@ interface ProductItem {
 const PRODUCTS_DATA: ProductItem[] = [
   {
     id: '1',
-    slug: 'vinyl-banner-printing',
-    title: 'Custom Outdoor Vinyl Banners',
-    category: 'Large Format Printing',
-    shortDescription: 'High-DPI weather-resistant vinyl banners crafted for maximum visual impact and outdoor durability.',
-    description: 'Our outdoor vinyl banners are printed using premium Eco-Solvent and UV ink technology to ensure sharp color accuracy and weather resistance. Ideal for retail grand openings, corporate events, trade shows, and outdoor advertising.',
-    mainImage: 'https://images.unsplash.com/photo-1562654501-a0ccc0fc3fb1?q=80&w=1200&auto=format&fit=crop',
+    slug: 'obbie-invoice-generator',
+    title: 'Obbie Invoice Generator & Billing Suite',
+    category: 'SaaS Platforms',
+    shortDescription: 'An automated, password-protected billing engine that instantly generates verifiable invoices, quotes, and receipts with secure cloud archiving.',
+    description: [
+      'We built the Obbie Invoice Generator to eliminate the friction of manual paperwork, lost receipts, and invoice verification headaches.',
+      'Whether you are billing corporate clients or issuing point-of-sale receipts, our platform produces crisp, branded PDF documents on demand.',
+      'Every generated document embeds a tamper-proof QR code linked to a secure ledger in Supabase, giving your business absolute transparency, professional polish, and effortless record-keeping.'
+    ].join('\n\n'),
+    mainImage: '/assets/oc/invoice-generator.webp',
     galleryImages: [
-      'https://images.unsplash.com/photo-1562654501-a0ccc0fc3fb1?q=80&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=1200&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=1200&auto=format&fit=crop',
+      '/assets/oc/invoice-generator.webp',
+      '/assets/oc/quotation-generator.webp',
+      '/assets/oc/authenticate.webp',
     ],
     features: [
-      '510gsm Premium Heavyweight PVC Vinyl',
-      'Weather-resistant, Waterproof & UV-proof Inks',
-      'Reinforced Hemmed Edges with Brass Grommets/Eyelets',
-      'Custom Dimensions & Resolution up to 1440 DPI'
+      'Instant PDF Generation for Invoices, Quotations, and Receipts',
+      'Tamper-Proof QR Code Authenticity Check & Live Verification Page',
+      'Secure Automated Cloud Archiving via Private Supabase Storage',
+      'Password-Protected Admin Portal & Fully Responsive Mobile UI'
     ],
     specifications: [
-      { label: 'Material', value: '510gsm High-Grade PVC' },
-      { label: 'Print Technology', value: 'Eco-Solvent / UV Flatbed' },
-      { label: 'Finishing', value: 'Hemmed edges + Grommets' },
-      { label: 'Turnaround Time', value: '24 - 48 Hours' }
+      { label: 'Platform Type', value: 'Web-Based SaaS / Next.js App Router' },
+      { label: 'Security', value: 'Encrypted HTTP-Only Session Cookies' },
+      { label: 'Cloud Storage', value: 'Supabase Private Bucket (Service Role)' },
+      { label: 'Output Format', value: 'High-Resolution Vector PDF' }
     ]
-  }
+  },
+
+  {
+    id: '2',
+    slug: 'citysearch',
+    title: 'citySearch — Hyperlocal Business Discovery Platform',
+    category: 'SaaS Platforms',
+    shortDescription: 'A hyperlocal business discovery platform developed by Obbie Concepts to help customers find local businesses across Kenya, explore their offerings, and connect directly through phone calls, WhatsApp, and Google Maps.',
+    description: [
+          'citySearch is a digital business discovery platform developed by Obbie Concepts to make finding local businesses easier. Whether customers are looking for a restaurant, a reliable plumber, a retail shop, or a professional service, citySearch helps them discover relevant businesses without the frustration of scrolling through unrelated results.',
+
+          'The platform brings business information together in one accessible place, allowing customers to explore business profiles, discover services, view photos, read available customer reviews, and connect directly through phone calls or WhatsApp. With Google Maps directions, users can move from discovering a business to finding and contacting it with ease.',
+
+          'For business owners, citySearch creates an opportunity to get found by potential customers actively searching for the products and services they offer. By showcasing their businesses online and making it easier for customers to connect with them, local enterprises can strengthen their digital presence and improve their visibility. Built by Obbie Concepts to support local commerce across Kenya, citySearch is making business discovery simpler for customers and helping businesses get closer to their next opportunity.'
+        ].join('\n\n'),
+    mainImage: '/assets/citysearch/citysearch-homepage.webp',
+    galleryImages: [
+      '/assets/citysearch/citysearch-homepage.webp',
+      '/assets/citysearch/citysearch-search-results.webp',
+      '/assets/citysearch/citysearch-business-profile.webp',
+      '/assets/citysearch/citysearch-dashboard.webp',
+      '/assets/citysearch/citysearch-found-results.webp',
+      '/assets/citysearch/citysearch-reviews.webp'
+    ],
+    features: [
+      'Location-Relevant Business Discovery to Help Customers Find Businesses and Services',
+      'Business Profiles Featuring Descriptions, Services, Photos, and Available Customer Reviews',
+      'Direct Customer Connections Through Phone Calls and WhatsApp',
+      'Google Maps Directions for Convenient Business Location Discovery and Navigation',
+      'Business Information and Descriptions to Help Customers Understand Available Offerings',
+      'Mobile-Responsive Interface for Business Discovery Across Devices',
+      'Digital Business Visibility for Local Enterprises Across Kenya',
+      'Business Registration and Listing Management for Participating Businesses'
+    ],
+    specifications: [
+      { label: 'Platform Type', value: 'Web-Based SaaS / Hyperlocal Business Discovery Platform' },
+      { label: 'Product Owner', value: 'Obbie Concepts' },
+      { label: 'Target Market', value: 'Consumers, SMEs, and Local Businesses Across Kenya' },
+      { label: 'Core Functionality', value: 'Business Discovery, Digital Listings, and Direct Customer Connections' },
+      { label: 'Communication Channels', value: 'Phone Calls and WhatsApp' },
+      { label: 'Location Services', value: 'Google Maps Directions and Business Location Discovery' },
+      { label: 'Access', value: 'Public Business Discovery with Business Account Registration' },
+      { label: 'Business Model', value: 'Business Discovery Platform with an Evolving Monetization Strategy' },
+      { label: 'Website', value: 'https://citysearch.co.ke' }
+    ]
+  },
 ];
 
 interface Props {
@@ -124,7 +173,6 @@ export default function ProductDetailPage({ params }: Props) {
     const touchEndY = e.changedTouches[0].clientY;
     const diffY = touchEndY - touchStartY;
 
-    // Swipe down more than 80px closes lightbox on mobile
     if (Math.abs(diffY) > 80) {
       closeLightbox();
     }
@@ -172,7 +220,7 @@ export default function ProductDetailPage({ params }: Props) {
               </div>
             </div>
 
-            {/* Thumbnail Selection Bar (Touch Friendly) */}
+            {/* Thumbnail Selection Bar */}
             {product.galleryImages && product.galleryImages.length > 0 && (
               <div className="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-none">
                 {product.galleryImages.map((img, idx) => (
@@ -200,13 +248,16 @@ export default function ProductDetailPage({ params }: Props) {
                 {product.category}
               </span>
 
-              <h1 className="text-2xl sm:text-4xl font-bold font-heading text-slate-900 dark:text-white mb-3">
+              <h1 className="text-2xl sm:text-4xl font-bold font-heading text-slate-900 dark:text-white mb-4">
                 {product.title}
               </h1>
 
-              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
-                {product.description}
-              </p>
+              {/* Formatted Description with Spacing for Long Text */}
+              <div className="space-y-4 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-8">
+                {product.description.split('\n\n').map((paragraph, index) => (
+                  <p key={index}>{paragraph}</p>
+                ))}
+              </div>
 
               {/* Highlights List */}
               <div className="mb-8">
@@ -230,9 +281,13 @@ export default function ProductDetailPage({ params }: Props) {
                 </h3>
                 <div className="rounded-2xl border border-slate-200 dark:border-slate-800 divide-y divide-slate-200 dark:divide-slate-800 bg-slate-50 dark:bg-[#131B2A] overflow-hidden">
                   {product.specifications.map((spec, i) => (
-                    <div key={i} className="flex items-center justify-between p-3 text-xs">
-                      <span className="font-semibold text-slate-500 dark:text-slate-400">{spec.label}</span>
-                      <span className="font-bold text-slate-900 dark:text-slate-100">{spec.value}</span>
+                    <div key={i} className="flex items-center justify-between p-3.5 text-xs gap-4">
+                      <span className="font-semibold text-slate-500 dark:text-slate-400 text-left shrink-0">
+                        {spec.label}
+                      </span>
+                      <span className="font-bold text-slate-900 dark:text-slate-100 text-right break-words">
+                        {spec.value}
+                      </span>
                     </div>
                   ))}
                 </div>

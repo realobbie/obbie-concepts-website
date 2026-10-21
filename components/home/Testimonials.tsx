@@ -5,9 +5,9 @@ import { IconStar, IconQuote } from '@tabler/icons-react';
 const testimonials = [
   {
     quote: "Obbie Concepts completely transformed our brand identity and printed collateral for our regional tech expo. Deliverables were crisp, precise, and delivered on tight deadlines.",
-    author: "Kipchumba B.",
-    role: "Operations Manager",
-    company: "North Rift Tech Expo",
+    author: "Rono .H.",
+    role: "Team Leader",
+    company: "Horizon Rivers of Hope",
     rating: 5,
   },
   {

@@ -22,10 +22,10 @@ export default function CtaBanner() {
             Trusted By Growing Companies
           </p>
           <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16 opacity-60 dark:opacity-40 grayscale hover:grayscale-0 transition-all duration-300">
-            <span className="text-xl font-black text-slate-700 dark:text-slate-300">TECHCORP</span>
-            <span className="text-xl font-black text-slate-700 dark:text-slate-300">VENTURES</span>
-            <span className="text-xl font-black text-slate-700 dark:text-slate-300">GLOBAL S.A.</span>
-            <span className="text-xl font-black text-slate-700 dark:text-slate-300">STUDIO LAB</span>
+            <span className="text-xl font-black text-slate-700 dark:text-slate-300">BELES ARTISTRY</span>
+            <span className="text-xl font-black text-slate-700 dark:text-slate-300">ROSE & ROSES</span>
+            <span className="text-xl font-black text-slate-700 dark:text-slate-300">HORIZON RIVERS OF HOPE</span>
+            <span className="text-xl font-black text-slate-700 dark:text-slate-300">LILO GLAM</span>
           </div>
         </div>
       </section>
