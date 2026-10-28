@@ -12,9 +12,12 @@ import {
   IconSend, 
   IconCheck, 
   IconStarFilled, 
-  IconQuote, 
   IconMessageDots, 
-  IconClock 
+  IconClock,
+  IconShieldCheck,
+  //IconZap,
+  IconHeartHandshake,
+  IconZeppelin
 } from '@tabler/icons-react';
 
 interface Testimonial {
@@ -110,17 +113,64 @@ export default function ContactPage() {
     <main className="min-h-screen bg-white dark:bg-[#0B0F17] text-slate-900 dark:text-slate-100 pt-6 sm:pt-10 pb-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         
-        {/* Header */}
+        {/* Header with Google Rating Badge */}
         <div data-aos="fade-down" className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <span className="bg-brand-orange/10 text-brand-orange border border-brand-orange/20 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider inline-flex items-center gap-1.5 mb-4">
-            <IconMessageDots size={14} /> Get In Touch
-          </span>
+          <div className="inline-flex items-center gap-2 bg-slate-50 dark:bg-[#131B2A] border border-slate-200 dark:border-slate-800 px-4 py-1.5 rounded-full text-xs font-bold text-slate-800 dark:text-slate-200 mb-4 shadow-xs">
+            <div className="flex items-center gap-1 text-amber-400">
+              <IconStarFilled size={14} />
+              <IconStarFilled size={14} />
+              <IconStarFilled size={14} />
+              <IconStarFilled size={14} />
+              <IconStarFilled size={14} />
+            </div>
+            <span>4.9 Rating Verified Client Reviews</span>
+          </div>
+
           <h1 className="text-3xl sm:text-5xl font-bold font-heading leading-tight mb-4 text-slate-900 dark:text-white">
             Let’s Build Something Great Together
           </h1>
           <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
             Have a project in mind, need a technical consultation, or want to explore working with Obbie Concepts? Send us a message below or connect directly.
           </p>
+        </div>
+
+        {/* Why Choose Us Trust Pillars */}
+        <div data-aos="fade-up" className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <div className="bg-slate-50 dark:bg-[#131B2A] border border-slate-200 dark:border-slate-800 rounded-2xl p-5 flex items-start gap-4">
+            <span className="p-3 bg-brand-orange/10 text-brand-orange rounded-xl shrink-0">
+              <IconZeppelin size={22} />
+            </span>
+            <div>
+              <h3 className="text-xs font-bold text-slate-900 dark:text-white mb-1">Fast Turnaround</h3>
+              <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
+                We deliver high-speed web portals and rapid print runs efficiently without sacrificing quality.
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-slate-50 dark:bg-[#131B2A] border border-slate-200 dark:border-slate-800 rounded-2xl p-5 flex items-start gap-4">
+            <span className="p-3 bg-brand-orange/10 text-brand-orange rounded-xl shrink-0">
+              <IconShieldCheck size={22} />
+            </span>
+            <div>
+              <h3 className="text-xs font-bold text-slate-900 dark:text-white mb-1">Proven Expertise</h3>
+              <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
+                Years of experience scaling brands across Kenya with custom software and precision branding.
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-slate-50 dark:bg-[#131B2A] border border-slate-200 dark:border-slate-800 rounded-2xl p-5 flex items-start gap-4">
+            <span className="p-3 bg-brand-orange/10 text-brand-orange rounded-xl shrink-0">
+              <IconHeartHandshake size={22} />
+            </span>
+            <div>
+              <h3 className="text-xs font-bold text-slate-900 dark:text-white mb-1">Dedicated Support</h3>
+              <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
+                Direct communication channels and dedicated project guidance from start to launch.
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Contact Info & Form Grid */}
@@ -180,8 +230,19 @@ export default function ContactPage() {
                 </div>
               </div>
 
+              {/* Quick Response Promise Card */}
+              <div className="p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl space-y-1">
+                <p className="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                  Quick Response Promise
+                </p>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
+                  We respond to all inquiries and quote requests within 2 hours during business hours.
+                </p>
+              </div>
+
               {/* Instant WhatsApp CTA */}
-              <div className="pt-6 border-t border-slate-200 dark:border-slate-800">
+              <div className="pt-4 border-t border-slate-200 dark:border-slate-800">
                 <p className="text-xs text-slate-500 mb-3">Prefer instant messaging?</p>
                 <a
                   href={`https://wa.me/${whatsappNumber}?text=${whatsappMsg}`}
@@ -207,7 +268,7 @@ export default function ContactPage() {
                     Message Sent Successfully!
                   </h3>
                   <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-md mx-auto leading-relaxed">
-                    Thank you for contacting Obbie Concepts. A member of our team will review your inquiry and respond within 24 hours.
+                    Thank you for contacting Obbie Concepts. A member of our team will review your inquiry and respond within 2 hours.
                   </p>
                   <button
                     onClick={() => setSubmitted(false)}
@@ -282,7 +343,7 @@ export default function ContactPage() {
                         <option value="UI/UX Design">UI/UX Design & Branding</option>
                         <option value="Digital Marketing">Digital Marketing & SEO</option>
                         <option value="Consulting">Technical Consultation</option>
-                        <option value="Sales & Marketing">Sales & Marketing </option>
+                        <option value="Sales & Marketing">Sales & Marketing</option>
                       </select>
                     </div>
                   </div>
@@ -320,57 +381,121 @@ export default function ContactPage() {
 
         </div>
 
-        {/* Customer Reviews / Testimonials Section */}
-        <section data-aos="fade-up" className="mb-20 pt-10 border-t border-slate-200 dark:border-slate-800">
-          <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="text-xs font-bold uppercase tracking-wider text-brand-orange mb-2 block">
-              Client Feedback
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-bold font-heading text-slate-900 dark:text-white">
-              What Our Partners Say
-            </h2>
-          </div>
+       {/* Customer Reviews / Testimonials Section */}
+       <section data-aos="fade-up" className="mb-20 pt-10 border-t border-slate-200 dark:border-slate-800">
+         {/* Header Section */}
+         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+           <div>
+             <span className="text-xs font-bold uppercase tracking-wider text-brand-orange mb-2 block">
+               Client Feedback
+             </span>
+             <h2 className="text-2xl sm:text-3xl font-bold font-heading text-slate-900 dark:text-white">
+               What Our Partners Say
+             </h2>
+           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {TESTIMONIALS.map((t, idx) => (
-              <div
-                key={t.id}
-                data-aos="fade-up"
-                data-aos-delay={idx * 100}
-                className="rounded-2xl bg-slate-50 dark:bg-[#131B2A] border border-slate-200 dark:border-slate-800 p-6 flex flex-col justify-between"
-              >
-                <div>
-                  {/* Rating Stars */}
-                  <div className="flex items-center gap-1 text-amber-400 mb-4">
-                    {[...Array(t.rating)].map((_, i) => (
-                      <IconStarFilled key={i} size={14} />
-                    ))}
-                  </div>
-                  <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed italic mb-6">
-                    "{t.comment}"
-                  </p>
-                </div>
+           {/* Desktop Only Google Review Button */}
+           <div className="hidden md:block">
+             <a
+               href="https://g.page/r/CZnExPd2fxmkEAI/review"
+               target="_blank"
+               rel="noopener noreferrer"
+               className="inline-flex items-center gap-2 bg-slate-100 dark:bg-[#131B2A] border border-slate-200 dark:border-slate-800 hover:border-brand-orange/50 text-slate-800 dark:text-slate-200 px-5 py-3 rounded-2xl text-xs font-bold transition-all shadow-sm group"
+             >
+               <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24">
+                 <path
+                   fill="#4285F4"
+                   d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                 />
+                 <path
+                   fill="#34A853"
+                   d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                 />
+                 <path
+                   fill="#FBBC05"
+                   d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"
+                 />
+                 <path
+                   fill="#EA4335"
+                   d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"
+                 />
+               </svg>
+               <span>Leave a Google Review</span>
+             </a>
+           </div>
+         </div>
 
-                {/* Author Info */}
-                <div className="flex items-center gap-3 pt-4 border-t border-slate-200/60 dark:border-slate-800/60">
-                  <img
-                    src={t.avatar}
-                    alt={t.name}
-                    className="w-10 h-10 rounded-full object-cover ring-2 ring-brand-orange/30"
-                  />
-                  <div>
-                    <h4 className="text-xs font-bold text-slate-900 dark:text-white">
-                      {t.name}
-                    </h4>
-                    <p className="text-[11px] text-slate-500 dark:text-slate-400">
-                      {t.role}, {t.company}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
+         {/* Testimonial Cards Grid */}
+         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+           {TESTIMONIALS.map((t, idx) => (
+             <div
+               key={t.id}
+               data-aos="fade-up"
+               data-aos-delay={idx * 100}
+               className="rounded-2xl bg-slate-50 dark:bg-[#131B2A] border border-slate-200 dark:border-slate-800 p-6 flex flex-col justify-between"
+             >
+               <div>
+                 {/* Rating Stars */}
+                 <div className="flex items-center gap-1 text-amber-400 mb-4">
+                   {[...Array(t.rating)].map((_, i) => (
+                     <IconStarFilled key={i} size={14} />
+                   ))}
+                 </div>
+                 <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed italic mb-6">
+                   "{t.comment}"
+                 </p>
+               </div>
+
+               {/* Author Info */}
+               <div className="flex items-center gap-3 pt-4 border-t border-slate-200/60 dark:border-slate-800/60">
+                 <img
+                   src={t.avatar}
+                   alt={t.name}
+                   className="w-10 h-10 rounded-full object-cover ring-2 ring-brand-orange/30"
+                 />
+                 <div>
+                   <h4 className="text-xs font-bold text-slate-900 dark:text-white">
+                     {t.name}
+                   </h4>
+                   <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                     {t.role}, {t.company}
+                   </p>
+                 </div>
+               </div>
+             </div>
+           ))}
+         </div>
+
+         {/* Mobile Only Google Review Button */}
+         <div className="block md:hidden text-center pt-2">
+           <a
+             href="https://g.page/r/CZnExPd2fxmkEAI/review"
+             target="_blank"
+             rel="noopener noreferrer"
+             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-100 dark:bg-[#131B2A] border border-slate-200 dark:border-slate-800 hover:border-brand-orange/50 text-slate-800 dark:text-slate-200 px-5 py-3.5 rounded-2xl text-xs font-bold transition-all shadow-sm"
+           >
+             <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24">
+               <path
+                 fill="#4285F4"
+                 d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+               />
+               <path
+                 fill="#34A853"
+                 d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+               />
+               <path
+                 fill="#FBBC05"
+                 d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"
+               />
+               <path
+                 fill="#EA4335"
+                 d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"
+               />
+             </svg>
+             <span>Leave a Google Review</span>
+           </a>
+         </div>
+       </section>
 
         {/* Map Location Section */}
         <section data-aos="fade-up" className="pt-6">

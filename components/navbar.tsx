@@ -33,79 +33,36 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="w-full z-50 lg:sticky lg:top-0 transition-colors">
-      {/* Outer wrapper: Full-width sticky top on Desktop | Floating bottom capsule on Mobile */}
+    <header className="w-full sticky top-0 z-50 transition-colors">
+      {/* Outer wrapper: Rounded bottom corners when mobile menu is open */}
       <div
-        className={`transition-all duration-300 ${
-          /* Mobile Bottom Floating Capsule (Made slightly thicker with py-3.5) */
-          'max-lg:fixed max-lg:bottom-4 max-lg:left-4 max-lg:right-4 max-lg:z-50 max-lg:rounded-2xl max-lg:border max-lg:border-white/25 dark:max-lg:border-slate-800 max-lg:shadow-2xl max-lg:px-5 max-lg:py-3.5'
+        className={`w-full transition-all duration-300 ${
+          mobileMenuOpen 
+            ? 'rounded-b-2xl border-b border-x border-slate-200 dark:border-slate-800 shadow-xl' 
+            : 'border-b border-slate-200 dark:border-slate-800'
         } ${
-          /* Desktop Full-Width Sticky Header */
-          'lg:w-full lg:border-b lg:border-slate-200/80 dark:lg:border-slate-800/80'
-        } ${
-          /* Frosty Glassmorphism Effect */
           isScrolled
-            ? 'bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl backdrop-saturate-150 shadow-lg'
-            : 'bg-white/95 dark:bg-slate-900/95 backdrop-blur-md'
+            ? 'bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-sm'
+            : 'bg-white dark:bg-slate-900'
         }`}
       >
-        {/* Mobile Upward Drawer Overlay */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden mb-4 pb-4 border-b border-slate-200/80 dark:border-slate-800 space-y-3.5 max-h-[60vh] overflow-y-auto animate-fadeIn">
-            <nav className="space-y-1.5">
-              {navItems.map((item) => {
-                const isActive = pathname === item.href;
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className={`block px-4 py-3 rounded-xl text-base font-semibold transition-colors ${
-                      isActive 
-                        ? 'text-brand-orange bg-orange-50/90 dark:bg-slate-800 font-bold' 
-                        : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100/70 dark:hover:bg-slate-800/70'
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              })}
-            </nav>
-
-            <div className="pt-3.5 border-t border-slate-200/80 dark:border-slate-800 flex flex-col gap-3.5">
-              <div className="flex items-center justify-between px-2">
-                <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Switch Theme</span>
-                <ThemeToggle />
-              </div>
-
-              <Link
-                href="/about"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full text-center bg-brand-orange hover:bg-brand-orange-hover text-white text-sm font-bold py-3.5 rounded-xl shadow-md transition-all"
-              >
-                Get Started
-              </Link>
-            </div>
-          </div>
-        )}
-
-        {/* Desktop Inner Container (Centered 7xl content area with slightly thicker height lg:h-24) */}
-        <div className="max-w-7xl mx-auto px-4 lg:px-6 lg:h-24 flex items-center justify-between w-full">
+        {/* Inner Container */}
+        <div className="max-w-7xl mx-auto px-4 lg:px-6 h-16 lg:h-24 flex items-center justify-between w-full">
           {/* Brand Logo */}
-          <Link href="/" className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-2.5">
             <Image 
               src="/obbieLogo.png" 
               alt="Obbie Concepts Logo" 
               width={42} 
               height={42} 
-              className="w-10 h-10 sm:w-11 sm:h-11 object-contain"
+              className="w-9 h-9 sm:w-11 sm:h-11 object-contain"
               priority
             />
             <div className="flex flex-col">
-              <span className="font-heading font-extrabold text-lg sm:text-xl text-brand-navy dark:text-white tracking-tight leading-none">
+              <span className="font-heading font-extrabold text-base sm:text-xl text-brand-navy dark:text-white tracking-tight leading-none">
                 OBBIE <span className="text-brand-orange">CONCEPTS</span>
               </span>
-              <span className="text-[8px] sm:text-[9.5px] font-semibold text-slate-500 dark:text-slate-400 tracking-wider uppercase mt-1">
+              <span className="text-[7.5px] sm:text-[9.5px] font-semibold text-slate-500 dark:text-slate-400 tracking-wider uppercase mt-1">
                 Bringing Abstract To Reality
               </span>
             </div>
@@ -135,10 +92,10 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-3.5">
             <ThemeToggle />
             <Link
-              href="/about"
+              href="/booking"
               className="bg-brand-orange hover:bg-brand-orange-hover text-white text-sm font-bold px-6 py-3 rounded-xl shadow-md transition-all"
             >
-              Get Started
+              Book a Free Consultation
             </Link>
           </div>
 
@@ -147,13 +104,53 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2.5 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              className="p-2 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
               aria-label="Toggle Navigation Menu"
             >
-              {mobileMenuOpen ? <IconX size={24} /> : <IconMenu2 size={24} />}
+              {mobileMenuOpen ? <IconX size={22} /> : <IconMenu2 size={22} />}
             </button>
           </div>
         </div>
+
+        {/* Mobile Dropdown Drawer Overlay */}
+        {mobileMenuOpen && (
+          <div className="lg:hidden px-4 pb-4 pt-1 border-t border-slate-100 dark:border-slate-800/60 space-y-2.5 max-h-[60vh] overflow-y-auto bg-white dark:bg-slate-900 rounded-b-2xl">
+            <nav className="space-y-0.5">
+              {navItems.map((item) => {
+                const isActive = pathname === item.href;
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`block px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-colors ${
+                      isActive 
+                        ? 'text-brand-orange bg-orange-50/90 dark:bg-slate-800 font-bold' 
+                        : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
+            </nav>
+
+            {/* Mobile Actions: Theme Toggle (Far Left) & Slightly Reduced Booking Button (Far Right) */}
+            <div className="pt-2.5 border-t border-slate-200/80 dark:border-slate-800 flex items-center justify-between gap-3">
+              <div className="shrink-0">
+                <ThemeToggle />
+              </div>
+
+              <Link
+                href="/booking"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex-1 text-center bg-brand-orange hover:bg-brand-orange-hover text-white text-[11px] sm:text-xs font-bold py-2.5 px-3 rounded-xl shadow-sm transition-all"
+              >
+                Book a Free Consultation
+              </Link>
+            </div>
+          </div>
+        )}
       </div>
     </header>
   );

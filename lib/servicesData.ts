@@ -138,7 +138,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     description: 'Custom branding and printing for promotional merchandise such as T-shirts, hoodies, mugs, tote bags, notebooks, pens, and other branded items that help organizations promote their identity and connect with their audiences.'
   }
     ],
-    impactMetric: 'High-DPI UV & Eco-Solvent Print Quality',
+    impactMetric: 'Quality Digital & Large Format Print',
   },
 
   {
@@ -231,7 +231,7 @@ export const SERVICES_DATA: ServiceItem[] = [
         description: 'Campaign tracking, website analytics, conversion measurement, and clear performance reports that reveal what is working, where opportunities exist, and how marketing efforts can improve.'
       }
     ],
-    impactMetric: 'Measurable ROI & Lead Conversion Tracking',
+    impactMetric: 'Measurable ROI & Lead Conversion',
   },
   {
     id: '5',

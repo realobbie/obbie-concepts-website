@@ -17,7 +17,7 @@ export default function Footer() {
   const whatsappNumber = "254735602433";
 
   return (
-    <footer className="bg-brand-navy text-slate-300 pt-16 pb-12 border-t border-slate-800">
+    <footer className="bg-brand-navy text-slate-300 pt-16 pb-12 border-t border-slate-800 max-md:rounded-t-3xl">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
         
         {/* Brand Column */}
@@ -121,8 +121,8 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 mt-12 pt-6 border-t border-slate-800/80 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500 gap-4">
         <p>&copy; {new Date().getFullYear()} Obbie Concepts. All rights reserved.</p>
         <div className="flex gap-6">
-          <a href="#" className="hover:text-slate-400">Privacy Policy</a>
-          <a href="#" className="hover:text-slate-400">Terms of Service</a>
+          <Link href="/privacy-policy" className="hover:text-slate-400">Privacy Policy</Link>
+          <Link href="/terms-of-service" className="hover:text-slate-400">Terms of Service</Link>
         </div>
       </div>
     </footer>

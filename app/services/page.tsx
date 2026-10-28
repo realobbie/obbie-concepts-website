@@ -142,7 +142,7 @@ export default function ServicesPage() {
         {/* Page Header */}
         <div data-aos="fade-down" className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
           <span className="bg-brand-orange/10 text-brand-orange border border-brand-orange/20 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider inline-flex items-center gap-1.5 mb-4">
-            <IconBulb size={16} /> End-To-End Agency Capabilities
+            End-To-End Agency Capabilities
           </span>
           <h1 className="text-3xl sm:text-5xl font-bold font-heading leading-tight mb-4 text-slate-900 dark:text-white">
             Services Built to Scale Your Brand
@@ -402,7 +402,7 @@ export default function ServicesPage() {
         >
           <div className="max-w-xl">
             <span className="inline-flex items-center gap-1.5 text-brand-orange text-xs sm:text-sm font-bold uppercase tracking-wider mb-2">
-              <IconSparkles size={16} /> Multi-Service Retainers
+              Multi-Service Retainers
             </span>
             <h2 className="text-xl sm:text-3xl font-bold font-heading mb-2">
               Need an Integrated Design, Print & Digital Strategy?
