@@ -17,7 +17,7 @@ export default function Footer() {
   const whatsappNumber = "254735602433";
 
   return (
-    <footer className="bg-brand-navy text-slate-300 pt-16 pb-12 border-t border-slate-800 max-md:rounded-t-3xl">
+    <footer className="bg-brand-navy text-slate-300 pt-16 pb-12 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
         
         {/* Brand Column */}

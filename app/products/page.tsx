@@ -214,7 +214,7 @@ export default function ProductsPage() {
         >
           <div className="max-w-xl">
             <span className="inline-flex items-center gap-1.5 text-brand-orange text-xs font-bold uppercase tracking-wider mb-2">
-              <IconSparkles size={14} /> Bespoke Engineering
+              Bespoke Engineering
             </span>
             <h2 className="text-xl sm:text-2xl font-bold font-heading mb-2">
               Need a Custom Product Built for Your Brand?

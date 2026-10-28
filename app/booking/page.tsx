@@ -88,27 +88,27 @@ export default function BookingPage() {
         <div className="mb-6">
           <Link 
             href="/" 
-            className="inline-flex items-center gap-2 text-xs font-bold text-slate-500 dark:text-slate-400 hover:text-brand-orange transition-colors"
+            className="inline-flex items-center gap-2 text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-brand-orange transition-colors"
           >
-            <IconArrowLeft size={16} /> Back to Home
+            <IconArrowLeft size={18} /> Back to Home
           </Link>
         </div>
 
         {/* Header */}
         <div data-aos="fade-down" className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 bg-brand-orange/10 border border-brand-orange/20 text-brand-orange text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-3">
+          <div className="inline-flex items-center gap-2 bg-brand-orange/10 border border-brand-orange/20 text-brand-orange text-xs sm:text-sm font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-3">
             <IconCalendar size={16} /> Interactive Booking Suite
           </div>
-          <h1 className="text-3xl sm:text-4xl font-extrabold font-heading tracking-tight mb-2">
+          <h1 className="text-2xl sm:text-4xl font-extrabold font-heading tracking-tight mb-2">
             Schedule Your Project Consultation
           </h1>
-          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-lg mx-auto">
+          <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-lg mx-auto">
             Choose your service track, set your timeline, and lock in your project discovery session with Obbie Concepts in Eldoret.
           </p>
         </div>
 
         {/* Main Wizard Card */}
-        <div data-aos="fade-up" className="bg-slate-50 dark:bg-[#131B2A] border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl">
+        <div data-aos="fade-up" className="bg-slate-50 dark:bg-[#131B2A] border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 shadow-xl">
           
           {submitted ? (
             /* Success State */
@@ -117,10 +117,10 @@ export default function BookingPage() {
                 <IconCheck size={32} />
               </div>
               <div className="space-y-2">
-                <h3 className="text-2xl font-bold font-heading text-slate-900 dark:text-white">
+                <h3 className="text-xl sm:text-2xl font-bold font-heading text-slate-900 dark:text-white">
                   Booking Request Received!
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-md mx-auto leading-relaxed">
+                <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-md mx-auto leading-relaxed">
                   We have logged your request for <strong>{serviceType}</strong>. Our team will review your specs and reach out within 2 hours.
                 </p>
               </div>
@@ -130,13 +130,13 @@ export default function BookingPage() {
                   href={whatsappDirectLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3.5 rounded-2xl text-xs font-bold transition-all shadow-md"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3.5 rounded-2xl text-sm font-bold transition-all shadow-md"
                 >
                   <IconBrandWhatsapp size={18} /> Send Details to WhatsApp Now
                 </a>
                 <Link
                   href="/"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 px-6 py-3.5 rounded-2xl text-xs font-bold transition-all"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 px-6 py-3.5 rounded-2xl text-sm font-bold transition-all"
                 >
                   Return Home
                 </Link>
@@ -147,29 +147,29 @@ export default function BookingPage() {
               {/* Step Progress Indicators */}
               <div className="flex items-center justify-between mb-6 pb-5 border-b border-slate-200 dark:border-slate-800">
                 <div className="flex items-center gap-2">
-                  <span className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold ${step >= 1 ? 'bg-brand-orange text-white' : 'bg-slate-200 dark:bg-slate-800 text-slate-500'}`}>
+                  <span className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${step >= 1 ? 'bg-brand-orange text-white' : 'bg-slate-200 dark:bg-slate-800 text-slate-500'}`}>
                     1
                   </span>
-                  <span className="text-xs font-bold hidden sm:inline text-slate-800 dark:text-slate-200">Service</span>
+                  <span className="text-sm font-bold hidden sm:inline text-slate-800 dark:text-slate-200">Service</span>
                 </div>
                 <div className="flex-1 h-0.5 bg-slate-200 dark:bg-slate-800 mx-3"></div>
                 <div className="flex items-center gap-2">
-                  <span className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold ${step >= 2 ? 'bg-brand-orange text-white' : 'bg-slate-200 dark:bg-slate-800 text-slate-500'}`}>
+                  <span className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${step >= 2 ? 'bg-brand-orange text-white' : 'bg-slate-200 dark:bg-slate-800 text-slate-500'}`}>
                     2
                   </span>
-                  <span className="text-xs font-bold hidden sm:inline text-slate-800 dark:text-slate-200">Timeline</span>
+                  <span className="text-sm font-bold hidden sm:inline text-slate-800 dark:text-slate-200">Timeline</span>
                 </div>
                 <div className="flex-1 h-0.5 bg-slate-200 dark:bg-slate-800 mx-3"></div>
                 <div className="flex items-center gap-2">
-                  <span className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold ${step >= 3 ? 'bg-brand-orange text-white' : 'bg-slate-200 dark:bg-slate-800 text-slate-500'}`}>
+                  <span className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${step >= 3 ? 'bg-brand-orange text-white' : 'bg-slate-200 dark:bg-slate-800 text-slate-500'}`}>
                     3
                   </span>
-                  <span className="text-xs font-bold hidden sm:inline text-slate-800 dark:text-slate-200">Details</span>
+                  <span className="text-sm font-bold hidden sm:inline text-slate-800 dark:text-slate-200">Details</span>
                 </div>
               </div>
 
               {errorMessage && (
-                <div className="mb-5 p-3 bg-red-500/10 border border-red-500/20 text-red-500 rounded-xl text-xs font-medium">
+                <div className="mb-5 p-3.5 bg-red-500/10 border border-red-500/20 text-red-500 rounded-xl text-sm font-medium">
                   {errorMessage}
                 </div>
               )}
@@ -178,18 +178,18 @@ export default function BookingPage() {
               {step === 1 && (
                 <div className="space-y-5">
                   <div>
-                    <h2 className="text-base font-bold font-heading text-slate-900 dark:text-white mb-1">
+                    <h2 className="text-lg sm:text-xl font-bold font-heading text-slate-900 dark:text-white mb-1">
                       What are you building or printing?
                     </h2>
-                    <p className="text-xs text-slate-500 dark:text-slate-400">
+                    <p className="text-sm text-slate-600 dark:text-slate-400">
                       Select the primary service track for your consultation.
                     </p>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {[
-                      { title: 'Graphic Design & Branding', desc: 'Corporate identity, hoodies, mugs, flyers, Business Cards, Receipt Books, Wedding Cards, Posters, Brochures, Logos, Certificates, Funeral Programs ', icon: IconPalette },
-                      { title: 'Web & App Development', desc: 'Next.js Websites, School Websites, Businesss Websites, Organizational Websites,SaaS apps, custom systems, Web Maintenance', icon: IconCode },                      
+                      { title: 'Graphic Design & Branding', desc: 'Corporate identity, hoodies, mugs, flyers, Business Cards, Receipt Books, Wedding Cards, Posters, Brochures, Logos, Certificates, Funeral Programs', icon: IconPalette },
+                      { title: 'Web & App Development', desc: 'Next.js Websites, School Websites, Business Websites, Organizational Websites, SaaS apps, custom systems, Web Maintenance', icon: IconCode },                     
                       { title: 'Digital Marketing & SEO', desc: 'Meta ad funnels, GMB, SEO Optimization, Content Creation, local SEO growth', icon: IconSpeakerphone },
                       { title: 'Large Format Printing', desc: 'Banners, signage, campaign posters, Stickers, Reflective Stickers, Road Signs', icon: IconPrinter },
                     ].map((item) => (
@@ -197,30 +197,30 @@ export default function BookingPage() {
                         type="button"
                         key={item.title}
                         onClick={() => setServiceType(item.title)}
-                        className={`text-left p-3.5 rounded-2xl border transition-all flex items-start gap-3 cursor-pointer ${
+                        className={`text-left p-4 rounded-2xl border transition-all flex items-start gap-3.5 cursor-pointer ${
                           serviceType === item.title
                             ? 'bg-brand-orange/10 border-brand-orange text-slate-900 dark:text-white'
                             : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-slate-400 text-slate-700 dark:text-slate-300'
                         }`}
                       >
-                        <span className={`p-2 rounded-xl shrink-0 ${serviceType === item.title ? 'bg-brand-orange text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-500'}`}>
-                          <item.icon size={18} />
+                        <span className={`p-2.5 rounded-xl shrink-0 ${serviceType === item.title ? 'bg-brand-orange text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-500'}`}>
+                          <item.icon size={20} />
                         </span>
                         <div>
-                          <h3 className="text-xs font-bold">{item.title}</h3>
-                          <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">{item.desc}</p>
+                          <h3 className="text-sm sm:text-base font-bold">{item.title}</h3>
+                          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">{item.desc}</p>
                         </div>
                       </button>
                     ))}
                   </div>
 
-                  <div className="pt-2 flex justify-end">
+                  <div className="pt-3 flex justify-end">
                     <button
                       type="button"
                       onClick={() => setStep(2)}
-                      className="inline-flex items-center gap-2 bg-brand-orange hover:bg-brand-orange-hover text-white px-6 py-2.5 rounded-xl text-xs font-bold transition-all shadow-md cursor-pointer"
+                      className="inline-flex items-center gap-2 bg-brand-orange hover:bg-brand-orange-hover text-white px-7 py-3 rounded-xl text-sm font-bold transition-all shadow-md cursor-pointer"
                     >
-                      Next Step <IconArrowRight size={16} />
+                      Next Step <IconArrowRight size={18} />
                     </button>
                   </div>
                 </div>
@@ -230,10 +230,10 @@ export default function BookingPage() {
               {step === 2 && (
                 <div className="space-y-5">
                   <div>
-                    <h2 className="text-base font-bold font-heading text-slate-900 dark:text-white mb-1">
+                    <h2 className="text-lg sm:text-xl font-bold font-heading text-slate-900 dark:text-white mb-1">
                       What is your expected timeline?
                     </h2>
-                    <p className="text-xs text-slate-500 dark:text-slate-400">
+                    <p className="text-sm text-slate-600 dark:text-slate-400">
                       Help us understand your urgency so we can allocate resources.
                     </p>
                   </div>
@@ -248,35 +248,35 @@ export default function BookingPage() {
                         type="button"
                         key={time.title}
                         onClick={() => setTimeline(time.title)}
-                        className={`w-full text-left p-3.5 rounded-2xl border transition-all flex items-center justify-between cursor-pointer ${
+                        className={`w-full text-left p-4 rounded-2xl border transition-all flex items-center justify-between cursor-pointer ${
                           timeline === time.title
                             ? 'bg-brand-orange/10 border-brand-orange text-slate-900 dark:text-white'
                             : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300'
                         }`}
                       >
                         <div>
-                          <h3 className="text-xs font-bold">{time.title}</h3>
-                          <p className="text-[11px] text-slate-500 dark:text-slate-400">{time.desc}</p>
+                          <h3 className="text-sm sm:text-base font-bold">{time.title}</h3>
+                          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-0.5">{time.desc}</p>
                         </div>
-                        {timeline === time.title && <IconCheck size={18} className="text-brand-orange shrink-0" />}
+                        {timeline === time.title && <IconCheck size={20} className="text-brand-orange shrink-0" />}
                       </button>
                     ))}
                   </div>
 
-                  <div className="pt-2 flex items-center justify-between">
+                  <div className="pt-3 flex items-center justify-between">
                     <button
                       type="button"
                       onClick={() => setStep(1)}
-                      className="inline-flex items-center gap-2 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-5 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer"
+                      className="inline-flex items-center gap-2 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-6 py-3 rounded-xl text-sm font-bold transition-all cursor-pointer"
                     >
-                      <IconArrowLeft size={16} /> Back
+                      <IconArrowLeft size={18} /> Back
                     </button>
                     <button
                       type="button"
                       onClick={() => setStep(3)}
-                      className="inline-flex items-center gap-2 bg-brand-orange hover:bg-brand-orange-hover text-white px-6 py-2.5 rounded-xl text-xs font-bold transition-all shadow-md cursor-pointer"
+                      className="inline-flex items-center gap-2 bg-brand-orange hover:bg-brand-orange-hover text-white px-7 py-3 rounded-xl text-sm font-bold transition-all shadow-md cursor-pointer"
                     >
-                      Next Step <IconArrowRight size={16} />
+                      Next Step <IconArrowRight size={18} />
                     </button>
                   </div>
                 </div>
@@ -286,17 +286,17 @@ export default function BookingPage() {
               {step === 3 && (
                 <form onSubmit={handleFinalSubmit} className="space-y-4">
                   <div>
-                    <h2 className="text-base font-bold font-heading text-slate-900 dark:text-white mb-1">
+                    <h2 className="text-lg sm:text-xl font-bold font-heading text-slate-900 dark:text-white mb-1">
                       Finalize Your Booking
                     </h2>
-                    <p className="text-xs text-slate-500 dark:text-slate-400">
+                    <p className="text-sm text-slate-600 dark:text-slate-400">
                       Provide your contact details so our team can confirm your consultation.
                     </p>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
+                      <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1.5">
                         Full Name *
                       </label>
                       <input
@@ -306,12 +306,12 @@ export default function BookingPage() {
                         value={formData.name}
                         onChange={handleInputChange}
                         placeholder="John Doe"
-                        className="w-full px-3.5 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-xs text-slate-900 dark:text-white focus:outline-none focus:border-brand-orange"
+                        className="w-full px-4 py-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm text-slate-900 dark:text-white focus:outline-none focus:border-brand-orange"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
+                      <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1.5">
                         Email Address *
                       </label>
                       <input
@@ -321,13 +321,13 @@ export default function BookingPage() {
                         value={formData.email}
                         onChange={handleInputChange}
                         placeholder="john@example.com"
-                        className="w-full px-3.5 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-xs text-slate-900 dark:text-white focus:outline-none focus:border-brand-orange"
+                        className="w-full px-4 py-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm text-slate-900 dark:text-white focus:outline-none focus:border-brand-orange"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
+                    <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1.5">
                       Phone / WhatsApp Number *
                     </label>
                     <input
@@ -337,38 +337,38 @@ export default function BookingPage() {
                       value={formData.phone}
                       onChange={handleInputChange}
                       placeholder="+254 700 000 000"
-                      className="w-full px-3.5 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-xs text-slate-900 dark:text-white focus:outline-none focus:border-brand-orange"
+                      className="w-full px-4 py-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm text-slate-900 dark:text-white focus:outline-none focus:border-brand-orange"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
+                    <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1.5">
                       Project Notes / Specific Specs
                     </label>
                     <textarea
                       name="notes"
-                      rows={3}
+                      rows={4}
                       value={formData.notes}
                       onChange={handleInputChange}
                       placeholder="Briefly describe what you need..."
-                      className="w-full px-3.5 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-xs text-slate-900 dark:text-white focus:outline-none focus:border-brand-orange resize-none"
+                      className="w-full px-4 py-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm text-slate-900 dark:text-white focus:outline-none focus:border-brand-orange resize-none"
                     ></textarea>
                   </div>
 
-                  <div className="pt-2 flex items-center justify-between">
+                  <div className="pt-3 flex items-center justify-between">
                     <button
                       type="button"
                       onClick={() => setStep(2)}
-                      className="inline-flex items-center gap-2 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-5 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer"
+                      className="inline-flex items-center gap-2 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-6 py-3 rounded-xl text-sm font-bold transition-all cursor-pointer"
                     >
-                      <IconArrowLeft size={16} /> Back
+                      <IconArrowLeft size={18} /> Back
                     </button>
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="inline-flex items-center gap-2 bg-brand-orange hover:bg-brand-orange-hover text-white px-6 py-2.5 rounded-xl text-xs font-bold transition-all shadow-md disabled:opacity-50 cursor-pointer"
+                      className="inline-flex items-center gap-2 bg-brand-orange hover:bg-brand-orange-hover text-white px-7 py-3 rounded-xl text-sm font-bold transition-all shadow-md disabled:opacity-50 cursor-pointer"
                     >
-                      {isSubmitting ? 'Submitting...' : <>Confirm & Book <IconSend size={16} /></>}
+                      {isSubmitting ? 'Submitting...' : <>Confirm & Book <IconSend size={18} /></>}
                     </button>
                   </div>
                 </form>

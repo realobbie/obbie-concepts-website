@@ -7,9 +7,24 @@ import './globals.css';
 
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
+import JsonLd from '@/components/JsonLd';
 import { ThemeProvider } from '@/components/theme-provider';
+import { seoKeywordClusters } from '@/lib/seoKeywordClusters';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://obbieconcepts.com';
+
+// Dynamically generate metadata keywords from your centralized cluster file
+const siteKeywords = Array.from(
+  new Set([
+    ...seoKeywordClusters.brandAndAgency,
+    ...seoKeywordClusters.graphicDesign.slice(0, 5),
+    ...seoKeywordClusters.webDesignAndDevelopment.slice(0, 5),
+    ...seoKeywordClusters.digitalMarketing.slice(0, 5),
+    ...seoKeywordClusters.printing.slice(0, 5),
+    ...seoKeywordClusters.brandingAndPromotionalProducts.slice(0, 5),
+    ...seoKeywordClusters.softwareAndSaaS.slice(0, 5),
+  ])
+);
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -19,30 +34,7 @@ export const metadata: Metadata = {
   },
   description:
     'Obbie Concepts is a premier creative digital agency in Eldoret, Kenya. We specialize in custom web application development, corporate brand identity, digital marketing, flyers, brochures, custom merchandise branding, and large-format printing.',
-  keywords: [
-    'Obbie Concepts',
-    'Graphic Design Eldoret',
-    'Web Design Eldoret',
-    'Web Development Kenya',
-    'Digital Marketing Agency Kenya',
-    'Large Format Printing Eldoret',
-    'Branding Agency Eldoret',
-    'Printing and Branding Kenya',
-    'Next.js Web Developers Kenya',
-    'Meta Ads Agency Kenya',
-    'Custom Invoicing SaaS Kenya',
-    'Corporate Identity Design Kenya',
-    // --- Local Print & Promotional Keywords ---
-    'Flyer Design & Printing Eldoret',
-    'Brochure Printing Kenya',
-    'Poster Design Eldoret',
-    'Funeral Program Printing Kenya',
-    'Hoodie Branding Eldoret',
-    'Mug & Cup Branding Kenya',
-    'Campaign Posters Printing Kenya',
-    'Banner Printing Eldoret',
-    'Custom Apparel Branding Kenya',
-  ],
+  keywords: siteKeywords,
   authors: [{ name: 'Obbie Concepts', url: SITE_URL }],
   creator: 'Obbie Concepts',
   publisher: 'Obbie Concepts',
@@ -57,7 +49,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Obbie Concepts | Creative Digital Agency & Printing Services in Eldoret',
     description:
-      'We scale modern brands across Kenya with stunning graphics, high-speed Next.js web portals, targeted digital marketing, and precision physical printing.',
+      'We scale modern brands across Kenya with stunning graphics, high-speed websites, targeted digital marketing, and precision physical printing.',
     url: SITE_URL,
     siteName: 'Obbie Concepts',
     locale: 'en_KE',
@@ -108,11 +100,14 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem
         >
+          {/* Inject Structured Schema globally for AI & Search Engine Crawlers */}
+          <JsonLd />
+
           {/* ================= SITE CONTENT ================= */}
           <div className="relative z-10 flex flex-col min-h-screen">
             <Navbar />
 
-            {/* Standard main container without artificial top padding */}
+            {/* Standard main container */}
             <main className="flex-grow">{children}</main>
 
             <Footer />

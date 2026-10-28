@@ -1,3 +1,4 @@
+// app/_components/CtaBanner.tsx
 'use client';
 
 import Link from 'next/link';
@@ -30,8 +31,8 @@ export default function CtaBanner() {
         </div>
       </section>
 
-      {/* Main Call To Action */}
-      <section className="py-20 bg-slate-900 text-white border-t border-slate-800" data-aos="fade-up">
+      {/* Main Call To Action - Curved top on mobile to match the footer */}
+      <section className="py-20 bg-slate-900 text-white border-t border-slate-800 max-md:rounded-t-3xl" data-aos="fade-up">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-extrabold mb-4 tracking-tight font-heading">
             Ready to Take Your Digital Business to the Next Level?

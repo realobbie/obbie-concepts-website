@@ -135,43 +135,43 @@ export default function ContactPage() {
         </div>
 
         {/* Why Choose Us Trust Pillars */}
-        <div data-aos="fade-up" className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          <div className="bg-slate-50 dark:bg-[#131B2A] border border-slate-200 dark:border-slate-800 rounded-2xl p-5 flex items-start gap-4">
-            <span className="p-3 bg-brand-orange/10 text-brand-orange rounded-xl shrink-0">
-              <IconZeppelin size={22} />
-            </span>
-            <div>
-              <h3 className="text-xs font-bold text-slate-900 dark:text-white mb-1">Fast Turnaround</h3>
-              <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
-                We deliver high-speed web portals and rapid print runs efficiently without sacrificing quality.
-              </p>
+          <div data-aos="fade-up" className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div className="bg-slate-50 dark:bg-[#131B2A] border border-slate-200 dark:border-slate-800 rounded-2xl p-5 flex items-start gap-4">
+              <span className="p-3 bg-brand-orange/10 text-brand-orange rounded-xl shrink-0">
+                <IconZeppelin size={22} />
+              </span>
+              <div>
+                <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white mb-1">Fast Turnaround</h3>
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                  We deliver high-speed web portals and rapid print runs efficiently without sacrificing quality.
+                </p>
+              </div>
             </div>
-          </div>
 
-          <div className="bg-slate-50 dark:bg-[#131B2A] border border-slate-200 dark:border-slate-800 rounded-2xl p-5 flex items-start gap-4">
-            <span className="p-3 bg-brand-orange/10 text-brand-orange rounded-xl shrink-0">
-              <IconShieldCheck size={22} />
-            </span>
-            <div>
-              <h3 className="text-xs font-bold text-slate-900 dark:text-white mb-1">Proven Expertise</h3>
-              <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
-                Years of experience scaling brands across Kenya with custom software and precision branding.
-              </p>
+            <div className="bg-slate-50 dark:bg-[#131B2A] border border-slate-200 dark:border-slate-800 rounded-2xl p-5 flex items-start gap-4">
+              <span className="p-3 bg-brand-orange/10 text-brand-orange rounded-xl shrink-0">
+                <IconShieldCheck size={22} />
+              </span>
+              <div>
+                <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white mb-1">Proven Expertise</h3>
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                  Years of experience scaling brands across Kenya with custom software and precision branding.
+                </p>
+              </div>
             </div>
-          </div>
 
-          <div className="bg-slate-50 dark:bg-[#131B2A] border border-slate-200 dark:border-slate-800 rounded-2xl p-5 flex items-start gap-4">
-            <span className="p-3 bg-brand-orange/10 text-brand-orange rounded-xl shrink-0">
-              <IconHeartHandshake size={22} />
-            </span>
-            <div>
-              <h3 className="text-xs font-bold text-slate-900 dark:text-white mb-1">Dedicated Support</h3>
-              <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
-                Direct communication channels and dedicated project guidance from start to launch.
-              </p>
+            <div className="bg-slate-50 dark:bg-[#131B2A] border border-slate-200 dark:border-slate-800 rounded-2xl p-5 flex items-start gap-4">
+              <span className="p-3 bg-brand-orange/10 text-brand-orange rounded-xl shrink-0">
+                <IconHeartHandshake size={22} />
+              </span>
+              <div>
+                <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white mb-1">Dedicated Support</h3>
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                  Direct communication channels and dedicated project guidance from start to launch.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
 
         {/* Contact Info & Form Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-20">
